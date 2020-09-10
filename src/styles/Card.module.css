@@ -1,0 +1,31 @@
+.card {
+  background: url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid var(--my-dark-gray);
+  /* border: 1px solid red; */
+  border-radius: 5px;
+  width: 13rem;
+  height: 150px;
+  overflow: hidden;
+}
+
+.card__img {
+  width: 100%;
+}
+
+.card__description {
+  background-color: var(--my-gray);
+  text-align: center;
+  border-top: 1px solid var(--my-dark-gray);
+  padding: 0.2rem;
+}
+
+.card__name {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: var(--my-black);
+}

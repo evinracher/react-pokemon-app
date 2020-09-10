@@ -1,0 +1,7 @@
+.pokemons {
+  display: flex;
+  gap: 1.8rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1rem 8rem;
+}

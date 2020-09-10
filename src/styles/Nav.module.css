@@ -1,0 +1,38 @@
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--my-gray);
+  padding: 0.5rem;
+  height: 3rem;
+}
+
+.nav {
+  display: inline-block;
+}
+
+.nav__items {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  padding-left: 0.5rem;
+  margin: 0;
+}
+
+.nav__item {
+  list-style: none;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: black;
+}
+
+.nav__link--pokemons {
+  font-weight: 700;
+}
+
+.nav__link--home {
+  font-weight: 300;
+  font-size: 1.5rem;
+}
