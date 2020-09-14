@@ -24,7 +24,6 @@ const Details = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    isSearching: state.pokemon.isSearching,
     pokemon: state.pokemon.pokemonToShow,
     error: state.pokemon.error
   }

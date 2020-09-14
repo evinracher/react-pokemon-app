@@ -13,5 +13,3 @@ export const stopShow = () => {
     type: STOP_SHOW
   }
 }
-
-// export const searchPokemonByID = (id) => {}

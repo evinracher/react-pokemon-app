@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../../styles/Details.module.css';
-import { getClassNames } from '../../Utils';
+// import { getClassNames } from '../../Utils';
 const PokemonDetail = (props) => {
   const pokemon = props.pokemon;
   const handleClick = () => {

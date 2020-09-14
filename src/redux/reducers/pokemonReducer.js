@@ -1,36 +1,43 @@
-import { SEARCH, SEARCH_SUCCESS, SEARCH_ERROR } from '../actions/pokemonActions';
+import {
+  // SEARCH,
+  SEARCH_SUCCESS,
+  SEARCH_ERROR,
+  CHANGE_NAME
+} from '../actions/pokemonActions';
 
 const initialState = {
-  isSearching: false,
+  // isSearching: false,
   // currPokemon: null,
+  nameToSearch: '',
   pokemonToShow: null,
   error: null
 }
 
 function pokemon(state = initialState, action) {
   switch (action.type) {
-    case SEARCH:
+    case CHANGE_NAME:
       return {
         ...state,
-        isSearching: true,
         pokemonToShow: null,
-        error: null
+        pokemonToCompare: null,
+        error: null,
+        nameToSearch: action.payload.name
       }
 
     case SEARCH_SUCCESS:
       return {
         ...state,
-        isSearching: false,
+        pokemonToCompare: state.pokemonToShow,
         pokemonToShow: action.payload.pokemon
       }
 
     case SEARCH_ERROR:
       return {
         ...state,
-        isSearching: false,
         error: action.payload.error,
-        pokemonToShow: null
       }
+
+
     default:
       return state;
   }

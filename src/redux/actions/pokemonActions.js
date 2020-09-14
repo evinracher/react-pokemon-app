@@ -1,39 +1,11 @@
-export const SEARCH = 'SEARCH';
+// export const SEARCH = 'SEARCH';
 export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
 export const SEARCH_ERROR = 'SEARCH_ERROR';
+export const CHANGE_NAME = 'CHANGE_NAME';
 
 const URL = 'https://pokeapi.co/api/v2/pokemon/';
 
-export const searchByName = (name) => (dispatch) => {
-  if (!name) {
-    dispatch({
-      type: SEARCH_ERROR,
-      payload: {
-        error: 'Invalid pokemon name'
-      }
-    })
-    return;
-  }
-
-  dispatch({ type: SEARCH })
-
-  fetch(URL + name)
-    .then(res => res.json())
-    .then(pokemon => {
-      addPokemonDetails(pokemon, dispatch);
-    })
-    .catch(error => {
-      console.log('%cThere was an error while searching: ' + name, "color: orange;");
-      console.log('%c' + error, "color: orange;");
-      dispatch({
-        type: SEARCH_ERROR,
-        payload: {
-          error: error.toString()
-        }
-      })
-    })
-}
-
+// helper functions
 function addPokemonDetails(pokemon, dispatch) {
   fetch(pokemon.species.url)
     .then(res => res.json())
@@ -77,4 +49,41 @@ function addPokemonDetails(pokemon, dispatch) {
         }
       })
     })
+}
+
+export const searchByName = (name) => (dispatch) => {
+  if (!name) {
+    dispatch({
+      type: SEARCH_ERROR,
+      payload: {
+        error: 'Invalid pokemon name'
+      }
+    })
+    return;
+  }
+
+  fetch(URL + name)
+    .then(res => res.json())
+    .then(pokemon => {
+      addPokemonDetails(pokemon, dispatch);
+    })
+    .catch(error => {
+      console.log('%cThere was an error while searching: ' + name, "color: orange;");
+      console.log('%c' + error, "color: orange;");
+      dispatch({
+        type: SEARCH_ERROR,
+        payload: {
+          error: error.toString()
+        }
+      })
+    })
+}
+
+export const changeName = (name) => {
+  return {
+    type: CHANGE_NAME,
+    payload: {
+      name
+    }
+  }
 }

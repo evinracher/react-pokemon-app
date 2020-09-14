@@ -1,8 +1,12 @@
-import { SHOW, STOP_SHOW } from '../actions/globalActions';
+import {
+  SHOW,
+  STOP_SHOW
+} from '../actions/globalActions';
 
 const initialState = {
   isShowing: false,
   isComparing: false,
+  nameToSearch: '',
   pokemonsList: null
 }
 
@@ -18,7 +22,8 @@ function global(state = initialState, action) {
     case STOP_SHOW:
       return {
         ...state,
-        isShowing: false
+        isShowing: false,
+        name: ''
       }
 
     default:
