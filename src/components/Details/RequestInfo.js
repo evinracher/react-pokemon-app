@@ -5,8 +5,7 @@ import { getClassNames } from '../../Utils';
 
 const RequestInfo = (props) => {
   const handleClick = () => {
-    console.log("HERRE");
-    console.log(props.close());
+    props.close();
   }
   return (
     <div className={styles['request-container']}>

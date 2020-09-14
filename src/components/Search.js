@@ -6,11 +6,10 @@ import { searchByName } from '../redux/actions/pokemonActions';
 const Search = (props) => {
 
   const handleChange = (event) => {
-    // console.log(event.target.value);
     props.dispatch(show());
     // event.target.blur();
     // TODO: show if it found a pokemon
-    props.dispatch(searchByName(event.target.value.trim()));
+    props.dispatch(searchByName(event.target.value.trim().replace(/\s+/g,"-")));
   }
 
   return (
@@ -21,8 +20,6 @@ const Search = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
-
   return {
     isShowing: state.global.isShowing
   }

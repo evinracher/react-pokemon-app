@@ -14,6 +14,7 @@ function pokemon(state = initialState, action) {
         ...state,
         isSearching: true,
         pokemonToShow: null,
+        error: null
       }
 
     case SEARCH_SUCCESS:

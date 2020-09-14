@@ -23,10 +23,9 @@ const PokemonDetail = (props) => {
       <div className={styles['details__content']}>
         <div className={styles['info']}>
           <div className={styles['info__img-container']}>
-          {console.log(pokemon.sprites.front_default)}
             <img
             className={styles['info__img']}
-            src={(pokemon.sprites.front_default)}
+            src={(pokemon.imageUrl)}
             alt={`Pokemon ${pokemon.name}`}/>
           </div>
           <div className={styles['info__content']}>
@@ -43,7 +42,7 @@ const PokemonDetail = (props) => {
               </div>
               <div className={styles['info__attribute']}>
                 <strong className={styles['info__text']}>Gender</strong>
-                <p className={styles['info__text']}>20m</p>
+                <p className={styles['info__text']}>{pokemon.gender}</p>
               </div>
             </div>
             <div className={styles['info__attributes']}>

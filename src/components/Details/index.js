@@ -7,8 +7,6 @@ import Pokemon from './PokemonDetail';
 import Request from './RequestInfo';
 const Details = (props) => {
   const {pokemon } = props;
-  console.log("Pokemon: ");
-  console.dir(props.pokemon);
   
   return (
     <Modal>
@@ -25,7 +23,6 @@ const Details = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.pokemon);
   return {
     isSearching: state.pokemon.isSearching,
     pokemon: state.pokemon.pokemonToShow,

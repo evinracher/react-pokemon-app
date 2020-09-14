@@ -39,13 +39,13 @@
 }
 
 .info__img-container {
-  margin: auto;
-  max-width: 170px;
-  border: 1px solid red;
+  width: 186px;
+  margin: 0 auto;
 }
 
 .info__img {
-  width: 100%;
+  width: 186px;
+  image-rendering: pixelated;
 }
 
 .info__attributes {
@@ -108,17 +108,15 @@
   }
   .info {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
   }
-  .info__img-container {
-    width: 50%;
-    border: 1px solid red;
+  .info__content {
+    width: 60%;
   }
 }
 
 @media(min-width: 769px) {
   .details {
-    width: 50%;
-    min-width: 500px;
+    max-width: 620px;
   }
 }
