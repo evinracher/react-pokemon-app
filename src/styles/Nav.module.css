@@ -1,10 +1,9 @@
 .nav-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
   background: var(--my-gray);
   padding: 0.5rem;
-  height: 3rem;
 }
 
 .nav {
@@ -25,7 +24,6 @@
 
 .nav__link {
   text-decoration: none;
-  color: black;
 }
 
 .nav__link--pokemons {
@@ -35,4 +33,13 @@
 .nav__link--home {
   font-weight: 300;
   font-size: 1.5rem;
+}
+
+@media(min-width: 577px) {
+  .nav-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+  }
 }

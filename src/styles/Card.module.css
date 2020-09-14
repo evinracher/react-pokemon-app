@@ -6,8 +6,8 @@
   border: 1px solid var(--my-dark-gray);
   /* border: 1px solid red; */
   border-radius: 5px;
-  width: 13rem;
-  height: 150px;
+  width: 100%;
+  height: 30vh;
   overflow: hidden;
 }
 
@@ -28,4 +28,17 @@
   font-size: 1rem;
   letter-spacing: 2px;
   color: var(--my-black);
+}
+
+@media(min-width: 577px) {
+  .card {
+    background: url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid var(--my-dark-gray);
+    min-width: 100px;
+    max-width: 250px;
+    height: 150px;
+  }
 }

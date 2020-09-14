@@ -1,0 +1,9 @@
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background: var(--modal-color);
+  display: flex;
+  align-items: center;
+}

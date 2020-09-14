@@ -1,7 +1,25 @@
+.pokemons-container {
+  padding: 2rem;
+}
+
 .pokemons {
   display: flex;
-  gap: 1.8rem;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 1rem 8rem;
+  flex-direction: column;
+  gap: 2.5rem;
+  justify-content: center;
+}
+
+@media(min-width: 577px) {
+  .pokemons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    gap: 2.5rem;
+  }
+}
+
+@media(min-width: 769px) {
+  .pokemons {
+    gap: 1.8rem;
+  }
 }

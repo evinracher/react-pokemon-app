@@ -1,0 +1,124 @@
+.details {
+  background-color: white;
+  width: 100%;
+  margin: auto;
+  margin-top: 6rem;
+  border-radius: 5px;
+  height: 90%;
+  overflow: scroll;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.header__info {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.search__input {
+  background-color: var(--my-light-black);
+  padding-left: 1rem;
+  height: 2.5rem;
+  border: 1px solid var(--my-light-black);
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.search__input::placeholder {
+  color: white;
+}
+
+.details__content {
+  padding: 1rem;
+}
+
+.info__img-container {
+  margin: auto;
+  max-width: 170px;
+  border: 1px solid red;
+}
+
+.info__img {
+  width: 100%;
+}
+
+.info__attributes {
+  display: flex;
+  gap: 2.2rem;
+}
+
+.info__text {
+  font-size: 1.2rem;
+}
+
+.request-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.request-info {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.request__button {
+  align-self: flex-end;
+  margin: 1rem;
+}
+
+.loader div {
+  display: flex;
+  justify-content: center;
+}
+
+.button--close {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--my-light-black);
+}
+
+.button--close:active, .button--close:hover {
+  color: var(--my-black);
+  cursor: pointer;
+}
+
+@media(min-width: 577px) {
+  .details {
+    margin-top: auto;
+    width: 90%;
+    height: auto;
+  }
+  .header__info {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+  .search__input {
+    width: 150px;
+  }
+  .info {
+    display: flex;
+    gap: 2rem;
+  }
+  .info__img-container {
+    width: 50%;
+    border: 1px solid red;
+  }
+}
+
+@media(min-width: 769px) {
+  .details {
+    width: 50%;
+    min-width: 500px;
+  }
+}

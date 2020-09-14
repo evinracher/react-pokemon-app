@@ -5,6 +5,5 @@ export function getClassNames(styles, classList) {
       res += " " + styles[classname];
     }
   });
-  console.log(res);
   return res;
 }

@@ -1,29 +1,14 @@
 import React from 'react'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
-
-import Nav from './components/Nav';
-import Home from './components/Home';
-import Pokemons from './components/Pokemons';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import Main from './components/Main';
 
 const App = () => {
   return (
-    <Router>
-      <Nav />
-      <Switch>
-        <Route path="/pokemons">
-          <Pokemons />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-
-    </Router>
+    <Provider store={store}>
+      <Main/>
+    </Provider>
   )
 }
 
-export default App
+export default App;
