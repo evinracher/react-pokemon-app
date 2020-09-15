@@ -8,7 +8,7 @@ import {
 } from '../actions/pokemonActions';
 
 const initialState = {
-  nameToSearch: '',
+  nameToSearch: null,
   pokemonToShow: null,
   pokemonToCompare: null,
   isComparing: false,
@@ -31,6 +31,7 @@ function pokemon(state = initialState, action) {
       return {
         ...state,
         isSearching: false,
+        nameToSearch: null,
         pokemonToCompare: state.pokemonToShow,
         pokemonToShow: action.payload.pokemon,
       }
@@ -38,6 +39,7 @@ function pokemon(state = initialState, action) {
     case SEARCH_ERROR:
       return {
         ...state,
+        nameToSearch: null,
         error: action.payload.error,
       }
 

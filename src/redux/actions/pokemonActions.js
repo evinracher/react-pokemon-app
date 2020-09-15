@@ -53,8 +53,10 @@ function addPokemonDetails(pokemon, dispatch) {
     })
 }
 
-export const searchByName = (name) => (dispatch) => {
+export const searchByName = (param) => (dispatch) => {
+  const name = param.trim().replace(/\s+/g, "-");
   if (!name) {
+    console.log("Invalid pokemon name");
     dispatch({
       type: SEARCH_ERROR,
       payload: {

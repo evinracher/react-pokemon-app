@@ -8,19 +8,19 @@ import ComparePokemons from './PokemonComparison';
 import Request from './RequestInfo';
 const Details = (props) => {
   const { isComparing, isSearching, pokemonToCompare, pokemonToShow } = props;
-  return (
-    <Modal>
-      <div className={styles['details']}>
-        {isSearching && pokemonToShow === null
-          ?
-          (
-            <Request error={props.error} close={props.stopShow} />
-          )
-          : (
-            <ShowPokemon />)}
-      </div>
-    </Modal>
-  )
+  if (isSearching) {
+    return (
+      <Modal>
+        <Request error={props.error} close={props.stopShow} />
+      </Modal>
+    )
+
+  } else {
+    return (<Modal><ShowPokemon /></Modal>)
+  }
+
+
+
 }
 
 const mapStateToProps = (state) => {

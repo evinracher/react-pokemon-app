@@ -7,3 +7,28 @@
   display: flex;
   align-items: center;
 }
+
+.details {
+  background-color: white;
+  width: 100%;
+  margin: auto;
+  margin-top: 6rem;
+  border-radius: 5px;
+  height: 90%;
+  overflow: scroll;
+  position: relative;
+}
+
+@media(min-width: 577px) {
+  .details {
+    margin-top: auto;
+    width: 90%;
+    height: auto;
+  }
+}
+
+@media(min-width: 769px) {
+  .details {
+    max-width: 620px;
+  }
+}

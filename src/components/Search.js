@@ -8,7 +8,7 @@ const Search = (props) => {
   const [searchDebounce] = useDebounce(props.name, 500);
 
   useEffect(() => {
-    if (props.name !== '') {
+    if(props.name != null){
       props.show();
       console.log("Searching now for: " + props.name);
       props.search(props.name);
@@ -19,7 +19,7 @@ const Search = (props) => {
 
   const handleChange = (event) => {
     console.log()
-    props.changeName(event.target.value.trim().replace(/\s+/g, "-"));
+    props.changeName(event.target.value);
   }
 
   const handleBlur = (event) => {

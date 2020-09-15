@@ -92,6 +92,7 @@ const PokemonDetail = (props) => {
 
 
 const mapStateToProps = (state) => {
+  console.log(state.pokemon);
   return {
     name: state.pokemon.nameToSearch,
     pokemon: state.pokemon.pokemonToShow,
