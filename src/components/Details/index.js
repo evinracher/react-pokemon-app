@@ -8,18 +8,18 @@ import ComparePokemons from './PokemonComparison';
 import Request from './RequestInfo';
 const Details = (props) => {
   const { isComparing, isSearching, pokemonToCompare, pokemonToShow } = props;
-  if (isSearching) {
+  if (isComparing) {
+    if (!isSearching && props.error !== null) {
+      return (<Modal><ComparePokemons /></Modal>)
+    }
+  } else if (isSearching) {
     return (
       <Modal>
         <Request error={props.error} close={props.stopShow} />
       </Modal>
     )
-
-  } else {
-    return (<Modal><ShowPokemon /></Modal>)
   }
-
-
+  return (<Modal><ShowPokemon /></Modal>)
 
 }
 

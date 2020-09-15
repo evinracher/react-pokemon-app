@@ -1,4 +1,4 @@
-// export const SEARCH = 'SEARCH';
+export const SEARCH = 'SEARCH';
 export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
 export const SEARCH_ERROR = 'SEARCH_ERROR';
 export const CHANGE_NAME = 'CHANGE_NAME';
@@ -66,6 +66,12 @@ export const searchByName = (param) => (dispatch) => {
     return;
   }
 
+  console.log("Searching for: " + name);
+
+  dispatch({
+    type: SEARCH
+  })
+
   fetch(URL + name)
     .then(res => res.json())
     .then(pokemon => {
@@ -92,10 +98,12 @@ export const changeName = (name) => {
   }
 }
 
-export const compare = () => {
-  return {
+export const compare = (name) => (dispatch) => {
+  console.log("Searching to compare: " + name);
+  searchByName(name)(dispatch);
+  dispatch({
     type: COMPARE
-  }
+  })
 }
 
 export const stopCompare = () => {

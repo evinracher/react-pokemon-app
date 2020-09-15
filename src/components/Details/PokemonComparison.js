@@ -2,22 +2,22 @@ import React from 'react';
 import styles from '../../styles/Details.module.css';
 // import { getClassNames } from '../../Utils';
 import { connect } from 'react-redux';
-import { compare } from '../../redux/actions/pokemonActions';
-import { stopShow } from '../../redux/actions/globalActions';
+import { compare, stopCompare } from '../../redux/actions/pokemonActions';
 const PokemonComparison = (props) => {
-  const pokemon = props.pokemon;
+  const { pokemonToCompare, pokemonToShow } = props;
 
   const handleClick = () => {
     props.close();
   }
 
-  const handleChange = () => {
-    props.compare();
-  }
-
   return (
     <div className={styles['pokemon__comparison']} >
-      <h1>Comparing</h1>
+      <div className={styles['header']}>
+        <div className={styles['header__info']}>
+          <h2>{(pokemonToCompare.name + ' vs. ' + pokemonToShow.name).toUpperCase()}</h2>
+        </div>
+        <button className={styles['button--close']} onClick={handleClick}>x</button>
+      </div>
     </div>
   )
 }
@@ -26,14 +26,15 @@ const PokemonComparison = (props) => {
 const mapStateToProps = (state) => {
   return {
     name: state.pokemon.nameToSearch,
-    pokemon: state.pokemon.pokemonToShow,
+    pokemonToShow: state.pokemon.pokemonToShow,
+    pokemonToCompare: state.pokemon.pokemonToCompare,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     compare: () => dispatch(compare()),
-    close: () => dispatch(stopShow())
+    close: () => dispatch(stopCompare())
   }
 }
 

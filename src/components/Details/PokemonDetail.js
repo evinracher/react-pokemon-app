@@ -11,8 +11,8 @@ const PokemonDetail = (props) => {
     props.close();
   }
 
-  const handleChange = () => {
-    props.compare();
+  const handleChange = (event) => {
+    props.compare(event.target.value);
   }
 
   return (
@@ -101,8 +101,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    compare: () => dispatch(compare()),
-    close: () => dispatch(stopShow())
+    compare: (name) => dispatch(compare(name)),
+    close: () => dispatch(stopShow()),
   }
 }
 

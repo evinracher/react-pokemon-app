@@ -12,7 +12,6 @@ const Search = (props) => {
       props.show();
       console.log("Searching now for: " + props.name);
       props.search(props.name);
-      props.compare();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchDebounce])
@@ -53,7 +52,7 @@ const mapDispatchToProps = (dispatch) => {
     stopShow: () => dispatch(stopShow()),
     search: (name) => dispatch(searchByName(name)),
     changeName: (name) => dispatch(changeName(name)),
-    compare: () => dispatch(compare()),
+    compare: (name) => dispatch(compare(name)),
   }
 }
 
