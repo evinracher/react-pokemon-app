@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styles from '../styles/Search.module.css';
 import { connect } from 'react-redux';
 import { show, stopShow } from '../redux/actions/globalActions';
-import { changeName, searchByName } from '../redux/actions/pokemonActions';
+import { changeName, searchByName, compare } from '../redux/actions/pokemonActions';
 import { useDebounce } from 'use-debounce';
 const Search = (props) => {
   const [searchDebounce] = useDebounce(props.name, 500);
@@ -12,21 +12,10 @@ const Search = (props) => {
       props.show();
       console.log("Searching now for: " + props.name);
       props.search(props.name);
-    } else {
-      props.changeName('');
-      props.stopShow();
+      props.compare();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchDebounce])
-
-  useEffect(() => {
-    if (props.name === '') {
-      console.log("It was rendered the first time");
-    } else {
-      console.log("re-rendered");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   const handleChange = (event) => {
     console.log()
@@ -36,8 +25,6 @@ const Search = (props) => {
   const handleBlur = (event) => {
     console.log()
     event.target.value = '';
-    props.stopShow();
-    props.changeName('');
   }
 
 
@@ -55,7 +42,8 @@ const Search = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    name: state.pokemon.nameToSearch
+    name: state.pokemon.nameToSearch,
+    pokemon: state.pokemon.pokemonToShow
   }
 }
 
@@ -64,7 +52,8 @@ const mapDispatchToProps = (dispatch) => {
     show: () => dispatch(show()),
     stopShow: () => dispatch(stopShow()),
     search: (name) => dispatch(searchByName(name)),
-    changeName: (name) => dispatch(changeName(name))
+    changeName: (name) => dispatch(changeName(name)),
+    compare: () => dispatch(compare()),
   }
 }
 

@@ -3,20 +3,21 @@ import { connect } from 'react-redux';
 import Modal from '../Modal';
 import { stopShow } from '../../redux/actions/globalActions';
 import styles from '../../styles/Details.module.css';
-import Pokemon from './PokemonDetail';
+import ShowPokemon from './PokemonDetail';
+import ComparePokemons from './PokemonComparison';
 import Request from './RequestInfo';
 const Details = (props) => {
-  const {pokemon } = props;
-  
+  const { isComparing, isSearching, pokemonToCompare, pokemonToShow } = props;
   return (
     <Modal>
       <div className={styles['details']}>
-        { pokemon === null
+        {isSearching && pokemonToShow === null
           ?
           (
-            <Request error={props.error} close={props.stopShow}/>
+            <Request error={props.error} close={props.stopShow} />
           )
-          : <Pokemon pokemon={props.pokemon} close={props.stopShow} />}
+          : (
+            <ShowPokemon />)}
       </div>
     </Modal>
   )
@@ -24,7 +25,10 @@ const Details = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    pokemon: state.pokemon.pokemonToShow,
+    pokemonToShow: state.pokemon.pokemonToShow,
+    isSearching: state.pokemon.isSearching,
+    pokemonToCompare: state.pokemon.pokemonToCompare,
+    isComparing: state.pokemon.isComparing,
     error: state.pokemon.error
   }
 }

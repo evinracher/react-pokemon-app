@@ -2,6 +2,8 @@
 export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
 export const SEARCH_ERROR = 'SEARCH_ERROR';
 export const CHANGE_NAME = 'CHANGE_NAME';
+export const COMPARE = 'COMPARE';
+export const STOP_COMPARE = 'STOP_COMPARE';
 
 const URL = 'https://pokeapi.co/api/v2/pokemon/';
 
@@ -85,5 +87,17 @@ export const changeName = (name) => {
     payload: {
       name
     }
+  }
+}
+
+export const compare = () => {
+  return {
+    type: COMPARE
+  }
+}
+
+export const stopCompare = () => {
+  return {
+    type: STOP_COMPARE
   }
 }

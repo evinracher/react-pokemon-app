@@ -1,10 +1,18 @@
 import React from 'react';
 import styles from '../../styles/Details.module.css';
 // import { getClassNames } from '../../Utils';
+import { connect } from 'react-redux';
+import { compare } from '../../redux/actions/pokemonActions';
+import { stopShow } from '../../redux/actions/globalActions';
 const PokemonDetail = (props) => {
   const pokemon = props.pokemon;
+
   const handleClick = () => {
     props.close();
+  }
+
+  const handleChange = () => {
+    props.compare();
   }
 
   return (
@@ -13,7 +21,7 @@ const PokemonDetail = (props) => {
         <div className={styles['header__info']}>
           <h2>{pokemon.name.toUpperCase()}</h2>
           <input className={styles['search__input']} placeholder="Compare to..."
-          // onChange={"handleChange"}
+          onChange={handleChange}
           >
           </input>
         </div>
@@ -24,9 +32,9 @@ const PokemonDetail = (props) => {
         <div className={styles['info']}>
           <div className={styles['info__img-container']}>
             <img
-            className={styles['info__img']}
-            src={(pokemon.imageUrl)}
-            alt={`Pokemon ${pokemon.name}`}/>
+              className={styles['info__img']}
+              src={(pokemon.imageUrl)}
+              alt={`Pokemon ${pokemon.name}`} />
           </div>
           <div className={styles['info__content']}>
             <p className={styles['info__text']}>{pokemon.description}</p>
@@ -82,4 +90,22 @@ const PokemonDetail = (props) => {
   )
 }
 
-export default PokemonDetail;
+
+const mapStateToProps = (state) => {
+  return {
+    name: state.pokemon.nameToSearch,
+    pokemon: state.pokemon.pokemonToShow,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    compare: () => dispatch(compare()),
+    close: () => dispatch(stopShow())
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PokemonDetail)
