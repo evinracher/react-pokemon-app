@@ -2,13 +2,19 @@ import React, { useEffect } from 'react';
 import styles from '../styles/Search.module.css';
 import { connect } from 'react-redux';
 import { show, stopShow } from '../redux/actions/globalActions';
-import { changeName, searchByName, compare } from '../redux/actions/pokemonActions';
+import {
+  initPokemon,
+  changeName,
+  searchByName,
+  compare
+} from '../redux/actions/pokemonActions';
 import { useDebounce } from 'use-debounce';
 const Search = (props) => {
   const [searchDebounce] = useDebounce(props.name, 500);
 
   useEffect(() => {
-    if(props.name != null){
+    if (props.name != null) {
+      props.initPokemon();
       props.show();
       console.log("Searching now for: " + props.name);
       props.search(props.name);
@@ -48,6 +54,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    initPokemon: () => dispatch(initPokemon()),
     show: () => dispatch(show()),
     stopShow: () => dispatch(stopShow()),
     search: (name) => dispatch(searchByName(name)),

@@ -1,10 +1,11 @@
 import {
-  // SEARCH,
+  INIT,
+  SEARCH,
   SEARCH_SUCCESS,
   SEARCH_ERROR,
   CHANGE_NAME,
   COMPARE,
-  STOP_COMPARE, SEARCH
+  STOP_COMPARE,
 } from '../actions/pokemonActions';
 
 const initialState = {
@@ -18,6 +19,13 @@ const initialState = {
 
 function pokemon(state = initialState, action) {
   switch (action.type) {
+    case INIT :
+      return {
+        ...state,
+        pokemonToCompare: null,
+        pokemonToShow: null
+      }
+    
     case CHANGE_NAME:
       return {
         ...state,
