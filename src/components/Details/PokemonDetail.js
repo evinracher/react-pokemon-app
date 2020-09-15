@@ -4,8 +4,9 @@ import styles from '../../styles/Details.module.css';
 import { connect } from 'react-redux';
 import { compare } from '../../redux/actions/pokemonActions';
 import { stopShow } from '../../redux/actions/globalActions';
+import Graphics from '../Graphics';
 const PokemonDetail = (props) => {
-  const pokemon = props.pokemon;
+  const { pokemon, close, compare, changeNameToCompare, isComparing } = props;
 
   const handleClick = () => {
     props.close();
@@ -22,13 +23,14 @@ const PokemonDetail = (props) => {
         <div className={styles['header__info']}>
           <h2>{pokemon.name.toUpperCase()}</h2>
           <input className={styles['search__input']} placeholder="Compare to..."
-          onChange={handleChange}
+            onChange={handleChange}
           >
           </input>
+          {isComparing && (<h3>Not found</h3>)}
         </div>
         <button className={styles['button--close']} onClick={handleClick}>x</button>
       </div>
-      <hr />
+      <hr className={styles['break-line']}/>
       <div className={styles['details__content']}>
         <div className={styles['info']}>
           <div className={styles['info__img-container']}>
@@ -82,9 +84,10 @@ const PokemonDetail = (props) => {
             </div>
           </div>
         </div>
-        <hr />
+        <hr  className={styles['break-line']}/>
         <div className={styles['stats']}>
-          <h2>Stats</h2>
+        {/* Add as many object as pokemons are */}
+          <Graphics dataset={[{data: pokemon.stats_data}]}/>
         </div>
       </div>
     </div>
@@ -97,6 +100,7 @@ const mapStateToProps = (state) => {
   return {
     name: state.pokemon.nameToSearch,
     pokemon: state.pokemon.pokemonToShow,
+    isComparing: state.pokemon.isComparing
   }
 }
 

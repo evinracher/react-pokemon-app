@@ -3,13 +3,15 @@ import {
   SEARCH,
   SEARCH_SUCCESS,
   SEARCH_ERROR,
-  CHANGE_NAME,
+  CHANGE_NAME_TO_SEARCH,
+  CHANGE_NAME_TO_COMPARE,
   COMPARE,
   STOP_COMPARE,
 } from '../actions/pokemonActions';
 
 const initialState = {
   nameToSearch: null,
+  nameToCompare: null,
   pokemonToShow: null,
   pokemonToCompare: null,
   isComparing: false,
@@ -19,20 +21,27 @@ const initialState = {
 
 function pokemon(state = initialState, action) {
   switch (action.type) {
-    case INIT :
+    case INIT:
       return {
         ...state,
         pokemonToCompare: null,
         pokemonToShow: null
       }
-    
-    case CHANGE_NAME:
+
+    case CHANGE_NAME_TO_SEARCH:
       return {
         ...state,
         pokemonToCompare: state.pokemonToShow,
         error: null,
         isSearching: true,
         nameToSearch: action.payload.name
+      }
+
+    case CHANGE_NAME_TO_COMPARE:
+      return {
+        ...state,
+        error: null,
+        nameToCompare: action.payload.name
       }
 
     case SEARCH:
@@ -65,7 +74,7 @@ function pokemon(state = initialState, action) {
         ...state,
         isComparing: true,
       }
-    
+
     case STOP_COMPARE:
       return {
         ...state,

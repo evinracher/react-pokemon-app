@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { show, stopShow } from '../redux/actions/globalActions';
 import {
   initPokemon,
-  changeName,
+  changeNameToSearch,
   searchByName,
   compare
 } from '../redux/actions/pokemonActions';
@@ -24,7 +24,7 @@ const Search = (props) => {
 
   const handleChange = (event) => {
     console.log()
-    props.changeName(event.target.value);
+    props.changeNameToSearch(event.target.value);
   }
 
   const handleBlur = (event) => {
@@ -58,7 +58,7 @@ const mapDispatchToProps = (dispatch) => {
     show: () => dispatch(show()),
     stopShow: () => dispatch(stopShow()),
     search: (name) => dispatch(searchByName(name)),
-    changeName: (name) => dispatch(changeName(name)),
+    changeNameToSearch: (name) => dispatch(changeNameToSearch(name)),
     compare: (name) => dispatch(compare(name)),
   }
 }

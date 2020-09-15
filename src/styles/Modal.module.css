@@ -6,6 +6,7 @@
   background: var(--modal-color);
   display: flex;
   align-items: center;
+  overflow: auto;
 }
 
 .details {
@@ -22,7 +23,6 @@
 @media(min-width: 577px) {
   .details {
     margin-top: auto;
-    width: 90%;
     height: auto;
   }
 }

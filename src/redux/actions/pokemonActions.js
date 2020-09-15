@@ -2,7 +2,8 @@ export const INIT = 'INIT';
 export const SEARCH = 'SEARCH';
 export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
 export const SEARCH_ERROR = 'SEARCH_ERROR';
-export const CHANGE_NAME = 'CHANGE_NAME';
+export const CHANGE_NAME_TO_SEARCH = 'CHANGE_NAME_TO_SEARCH';
+export const CHANGE_NAME_TO_COMPARE = 'CHANGE_NAME_TO_COMPARE';
 export const COMPARE = 'COMPARE';
 export const STOP_COMPARE = 'STOP_COMPARE';
 
@@ -51,9 +52,18 @@ export const searchByName = (param) => (dispatch) => {
     })
 }
 
-export const changeName = (name) => {
+export const changeNameToSearch = (name) => {
   return {
-    type: CHANGE_NAME,
+    type: CHANGE_NAME_TO_SEARCH,
+    payload: {
+      name
+    }
+  }
+}
+
+export const changeNameToCompare = (name) => {
+  return {
+    type: CHANGE_NAME_TO_COMPARE,
     payload: {
       name
     }
@@ -79,31 +89,40 @@ function addPokemonDetails(pokemon, dispatch) {
   fetch(pokemon.species.url)
     .then(res => res.json())
     .then(spicies => {
+
+      let result = {};
       let desc = spicies.flavor_text_entries.find((entry) => entry.language.name === 'en')
       let gender = spicies.gender_rate;
       if (desc) {
-        pokemon.description = desc.flavor_text.replace(/(\r\n|\n|\r)/gm, ' ');
+        result.description = desc.flavor_text.replace(/(\r\n|\n|\r)/gm, ' ');
       } else {
-        pokemon.description = 'No description provided';
+        result.description = 'No description provided';
       }
 
-      pokemon.imageUrl = pokemon.sprites.front_default;
+      result.imageUrl = pokemon.sprites.front_default;
       if (gender >= 0) {
         if (gender > 4) {
-          pokemon.gender = 'Female';
+          result.gender = 'Female';
           if (pokemon.sprites.front_female) {
-            pokemon.imageUrl = pokemon.sprites.front_female;
+            result.imageUrl = pokemon.sprites.front_female;
           }
         } else {
-          pokemon.gender = 'Male';
+          result.gender = 'Male';
         }
       } else {
-        pokemon.gender = 'Genderless';
+        result.gender = 'Genderless';
       }
+
+      result.stats_data = pokemon.stats.map(stat => stat.base_stat);
+      result.name = pokemon.name;
+      result.height = pokemon.height;
+      result.weight = pokemon.weight;
+      result.abilities = pokemon.abilities;
+      result.types = pokemon.types;
       dispatch({
         type: SEARCH_SUCCESS,
         payload: {
-          pokemon
+          pokemon: result
         }
       })
     })
