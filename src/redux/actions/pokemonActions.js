@@ -3,9 +3,6 @@ export const SEARCH = 'SEARCH';
 export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
 export const SEARCH_ERROR = 'SEARCH_ERROR';
 export const CHANGE_NAME_TO_SEARCH = 'CHANGE_NAME_TO_SEARCH';
-export const CHANGE_NAME_TO_COMPARE = 'CHANGE_NAME_TO_COMPARE';
-export const COMPARE = 'COMPARE';
-export const STOP_COMPARE = 'STOP_COMPARE';
 
 const URL = 'https://pokeapi.co/api/v2/pokemon/';
 
@@ -14,7 +11,6 @@ export const initPokemon = () => {
     type: INIT
   }
 }
-
 
 export const searchByName = (param) => (dispatch) => {
   const name = param.trim().replace(/\s+/g, "-");
@@ -58,29 +54,6 @@ export const changeNameToSearch = (name) => {
     payload: {
       name
     }
-  }
-}
-
-export const changeNameToCompare = (name) => {
-  return {
-    type: CHANGE_NAME_TO_COMPARE,
-    payload: {
-      name
-    }
-  }
-}
-
-export const compare = (name) => (dispatch) => {
-  console.log("Searching to compare: " + name);
-  searchByName(name)(dispatch);
-  dispatch({
-    type: COMPARE
-  })
-}
-
-export const stopCompare = () => {
-  return {
-    type: STOP_COMPARE
   }
 }
 

@@ -6,7 +6,6 @@ import {
   initPokemon,
   changeNameToSearch,
   searchByName,
-  compare
 } from '../redux/actions/pokemonActions';
 import { useDebounce } from 'use-debounce';
 const Search = (props) => {
@@ -59,7 +58,6 @@ const mapDispatchToProps = (dispatch) => {
     stopShow: () => dispatch(stopShow()),
     search: (name) => dispatch(searchByName(name)),
     changeNameToSearch: (name) => dispatch(changeNameToSearch(name)),
-    compare: (name) => dispatch(compare(name)),
   }
 }
 

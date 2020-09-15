@@ -2,19 +2,17 @@ import React from 'react';
 import styles from '../../styles/Details.module.css';
 // import { getClassNames } from '../../Utils';
 import { connect } from 'react-redux';
-import { compare } from '../../redux/actions/pokemonActions';
 import { stopShow } from '../../redux/actions/globalActions';
 import Graphics from '../Graphics';
 const PokemonDetail = (props) => {
-  const { pokemon, close, compare, changeNameToCompare, isComparing } = props;
+  const { pokemon, close } = props;
 
   const handleClick = () => {
-    props.close();
+    close();
   }
 
-  // TODO: Add debounce
-  const handleChange = (event) => {
-    props.compare(event.target.value);
+  // TODO: Change to button
+  const handleChange = () => {
   }
 
   return (
@@ -26,7 +24,6 @@ const PokemonDetail = (props) => {
             onChange={handleChange}
           >
           </input>
-          {isComparing && (<h3>Not found</h3>)}
         </div>
         <button className={styles['button--close']} onClick={handleClick}>x</button>
       </div>
@@ -100,13 +97,11 @@ const mapStateToProps = (state) => {
   return {
     name: state.pokemon.nameToSearch,
     pokemon: state.pokemon.pokemonToShow,
-    isComparing: state.pokemon.isComparing
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    compare: (name) => dispatch(compare(name)),
     close: () => dispatch(stopShow()),
   }
 }
