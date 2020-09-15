@@ -11,6 +11,7 @@ const PokemonDetail = (props) => {
     props.close();
   }
 
+  // TODO: Add debounce and trying to reduce search, modifiying if necesary the search component
   const handleChange = (event) => {
     props.compare(event.target.value);
   }

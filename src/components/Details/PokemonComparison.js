@@ -1,4 +1,5 @@
 import React from 'react';
+// TODO: Separate specific css per file into Details
 import styles from '../../styles/Details.module.css';
 // import { getClassNames } from '../../Utils';
 import { connect } from 'react-redux';
