@@ -31,7 +31,6 @@ const Search = (props) => {
     event.target.value = '';
   }
 
-
   return (
     <div className={styles['search']}>
       <input
@@ -47,7 +46,7 @@ const Search = (props) => {
 const mapStateToProps = (state) => {
   return {
     name: state.pokemon.nameToSearch,
-    pokemon: state.pokemon.pokemonToShow
+    pokemon: state.pokemon.pokemonSearched
   }
 }
 

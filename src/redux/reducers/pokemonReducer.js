@@ -8,7 +8,7 @@ import {
 
 const initialState = {
   nameToSearch: null,
-  pokemonToShow: null,
+  pokemonSearched: null,
   isSearching: true,
   error: null
 }
@@ -18,7 +18,7 @@ function pokemon(state = initialState, action) {
     case INIT:
       return {
         ...state,
-        pokemonToShow: null
+        pokemonSearched: null
       }
 
     case CHANGE_NAME_TO_SEARCH:
@@ -40,7 +40,7 @@ function pokemon(state = initialState, action) {
         ...state,
         isSearching: false,
         nameToSearch: null,
-        pokemonToShow: action.payload.pokemon,
+        pokemonSearched: action.payload.pokemon,
       }
 
     case SEARCH_ERROR:

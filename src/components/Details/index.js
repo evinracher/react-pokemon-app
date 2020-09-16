@@ -5,7 +5,7 @@ import { stopShow } from '../../redux/actions/globalActions';
 import ShowPokemon from './PokemonDetail';
 import Request from './RequestInfo';
 const Details = (props) => {
-  const { isSearching, pokemonToShow } = props;
+  const { isSearching, pokemonSearched } = props;
   if (isSearching) {
     return (
       <Modal>
@@ -23,7 +23,7 @@ const Details = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    pokemonToShow: state.pokemon.pokemonToShow,
+    pokemonSearched: state.pokemon.pokemonSearched,
     isSearching: state.pokemon.isSearching,
     error: state.pokemon.error
   }
