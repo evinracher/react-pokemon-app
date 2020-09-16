@@ -1,14 +1,18 @@
 .card {
   border: 1px solid var(--my-dark-gray);
   border-radius: 5px;
-  width: 100%;
+  width: 90%;
+  margin: auto;
   overflow: hidden;
+}
+
+.card__img-container {
+  width: 100%;
 }
 
 .card__img {
   width: 100%;
   image-rendering: pixelated;
-  height: 88%;
 }
 
 .card__description {
@@ -28,6 +32,13 @@
 }
 
 @media(min-width: 577px) {
+  .card__img-container {
+    height: 12rem;
+    width: 100%;
+  }
+  .card__img {
+    height: 100%;
+  }
   .card {
     border: 1px solid var(--my-dark-gray);
     min-width: 100px;

@@ -5,13 +5,17 @@ import { connect } from 'react-redux';
 import { updatePokemons } from '../redux/actions/globalActions';
 
 const Pokemons = (props) => {
-  const { nextURL, update, pokemons } = props;
+  const { nextURL, update, pokemons, isLoading } = props;
 
   useEffect(() => {
     update(nextURL);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   console.log(pokemons);
+  const handleLoadMoreClick = () => {
+    console.log('loading more...');
+    update(nextURL);
+  }
   return (
     <div className={styles['pokemons-container']}>
       <div className={styles['pokemons']}>
@@ -21,6 +25,10 @@ const Pokemons = (props) => {
           })
         }
       </div>
+      <div>
+        <button onClick={handleLoadMoreClick}>{isLoading ? 'Loading...':'Load more...'}
+        </button>
+      </div>
     </div>
   )
 }
@@ -29,6 +37,7 @@ const mapStateToProps = (state) => {
   console.log("State in global: ");
   console.log(state);
   return {
+    isLoading: state.global.isLoading,
     nextURL: state.global.nextURL,
     pokemons: state.global.pokemonsList
   }
