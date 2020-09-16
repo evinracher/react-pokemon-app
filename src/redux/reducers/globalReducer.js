@@ -29,17 +29,9 @@ function global(state = initialState, action) {
       }
 
     case UPDATE_POKEMONS:
-      console.log(state.pokemonsList);
-      console.log([].concat(action.payload.pokemons));
-      console.log(action.payload.pokemons);
-      action.payload.pokemons.forEach((element) => {
-        console.log("Entra")
-        console.log(element.name)
-      }
-      )
       return {
         nextURL: action.payload.nextURL,
-        pokemonsList: [...state.pokemonsList, ...action.payload.pokemons]
+        pokemonsList: state.pokemonsList.concat(action.payload.pokemons)
       }
     default:
       return state;

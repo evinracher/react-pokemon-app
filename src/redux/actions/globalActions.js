@@ -1,3 +1,4 @@
+import { getOnePokemon } from '../../Utils';
 export const SHOW = 'SHOW';
 export const STOP_SHOW = 'STOP_SHOW';
 export const COMPARE = 'COMPARE';
@@ -30,24 +31,49 @@ export const stopCompare = () => {
     type: STOP_COMPARE
   }
 }
-export const updatePokemons = (nextURL) => (dispatch) => {
-  let addPokemons = [];
-  fetch(nextURL)
-    .then(res => res.json())
-    .then((data) => {
-      console.log(data.results);
-      const pokemonPromises = Promise.all(
-        data.results.map( async (result) => {
-          return await fetch(result.url)
-          .then(res => res.json())
-        })
-      )
-      console.log(pokemonPromises)
-      pokemonPromises.then((data) => {
-        console.log(data)
+
+export const updatePokemons = (nextURL) => async (dispatch) => {
+  try {
+    let data = await fetch(nextURL).then(res => res.json());
+    console.log(data.next);
+    const pokemons = await Promise.all(
+      data.results.map((result) => {
+        return getOnePokemon(result.url);
       })
-    })
+    )
+
+    dispatch(
+      {
+        type: UPDATE_POKEMONS,
+        payload: {
+          pokemons,
+          nextURL: data.next
+        }
+      }
+    )
+  } catch (error) {
+    console.error('There was a problem in loading pokemons');
+    console.error(error);
+  }
 }
+
+// export const updatePokemons = (nextURL) => async (dispatch) => {
+//   let addPokemons = [];
+//   let results =  await fetch(nextURL).then(res => res.json());
+//     .then((data) => {
+//       console.log(data.results);
+//       const pokemonPromises = Promise.all(
+//         data.results.map( async (result) => {
+//           return await fetch(result.url)
+//           .then(res => res.json())
+//         })
+//       )
+//       console.log(pokemonPromises)
+//       pokemonPromises.then((data) => {
+//         console.log(data)
+//       })
+//     })
+// }
 
 
 export const updatePokemonsOld2 = (nextURL) => async (dispatch) => {

@@ -17,13 +17,9 @@ const Pokemons = (props) => {
       <div className={styles['pokemons']}>
         {
           pokemons.map((pokemon) => {
-            console.log("Pokemon:");
-            console.log(pokemon);
-            return <p>{pokemon.name}</p>;
+            return <Card key={pokemon.id} pokemon={pokemon}/>
           })
         }
-
-        {/* <Card /> */}
       </div>
     </div>
   )

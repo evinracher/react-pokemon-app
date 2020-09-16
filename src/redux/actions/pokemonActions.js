@@ -39,8 +39,8 @@ export const searchByName = (param) => async (dispatch) => {
       }
     })
   } catch (error) {
-    console.log('%cThere was an error while searching: ' + name, "color: orange;");
-    console.log('%c' + error, "color: orange;");
+    console.error('%cThere was an error while searching: ' + name, "color: orange;");
+    console.error('%c' + error, "color: orange;");
     dispatch({
       type: SEARCH_ERROR,
       payload: {
