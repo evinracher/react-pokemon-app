@@ -12,7 +12,7 @@ const PokemonDetail = (props) => {
   }
 
   // TODO: Change to button
-  const handleChange = () => {
+  const handleCompareClick = () => {
   }
 
   return (
@@ -20,10 +20,11 @@ const PokemonDetail = (props) => {
       <div className={styles['header']}>
         <div className={styles['header__info']}>
           <h2>{pokemon.name.toUpperCase()}</h2>
-          <input className={styles['search__input']} placeholder="Compare to..."
-            onChange={handleChange}
+          <button className={styles['button--compare']}
+            onClick={handleCompareClick}
           >
-          </input>
+          Compare to...
+          </button>
         </div>
         <button className={styles['button--close']} onClick={handleClick}>x</button>
       </div>
@@ -90,7 +91,6 @@ const PokemonDetail = (props) => {
     </div>
   )
 }
-
 
 const mapStateToProps = (state) => {
   console.log(state.pokemon);

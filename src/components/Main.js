@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
@@ -13,7 +13,8 @@ import Pokemons from './Pokemons';
 import Details from './Details/index';
 
 const Main = (props) => {
-  const {isShowing} = props;
+  const { isShowing } = props;
+
   return (
     <Router>
       <Nav />
@@ -30,11 +31,12 @@ const Main = (props) => {
   )
 }
 
-
 const mapStateToProps = (state) => {
   return {
     isShowing: state.global.isShowing
   }
 }
 
-export default connect(mapStateToProps)(Main)
+export default connect(
+  mapStateToProps,
+)(Main)

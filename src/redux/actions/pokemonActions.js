@@ -1,3 +1,4 @@
+import { getOnePokemon } from '../../Utils';
 export const INIT = 'INIT';
 export const SEARCH = 'SEARCH';
 export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
@@ -12,7 +13,7 @@ export const initPokemon = () => {
   }
 }
 
-export const searchByName = (param) => (dispatch) => {
+export const searchByName = (param) => async (dispatch) => {
   const name = param.trim().replace(/\s+/g, "-");
   if (!name) {
     console.log("Invalid pokemon name");
@@ -25,27 +26,28 @@ export const searchByName = (param) => (dispatch) => {
     return;
   }
 
-  console.log("Searching for: " + name);
-
   dispatch({
     type: SEARCH
   })
 
-  fetch(URL + name)
-    .then(res => res.json())
-    .then(pokemon => {
-      addPokemonDetails(pokemon, dispatch);
+  try {
+    const pokemon = await getOnePokemon(URL+name);
+    dispatch({
+      type: SEARCH_SUCCESS,
+      payload: {
+        pokemon
+      }
     })
-    .catch(error => {
-      console.log('%cThere was an error while searching: ' + name, "color: orange;");
-      console.log('%c' + error, "color: orange;");
-      dispatch({
-        type: SEARCH_ERROR,
-        payload: {
-          error: error.toString()
-        }
-      })
+  } catch (error) {
+    console.log('%cThere was an error while searching: ' + name, "color: orange;");
+    console.log('%c' + error, "color: orange;");
+    dispatch({
+      type: SEARCH_ERROR,
+      payload: {
+        error: error.toString()
+      }
     })
+  }
 }
 
 export const changeNameToSearch = (name) => {
@@ -55,59 +57,4 @@ export const changeNameToSearch = (name) => {
       name
     }
   }
-}
-
-// helper functions
-function addPokemonDetails(pokemon, dispatch) {
-  fetch(pokemon.species.url)
-    .then(res => res.json())
-    .then(spicies => {
-
-      let result = {};
-      let desc = spicies.flavor_text_entries.find((entry) => entry.language.name === 'en')
-      let gender = spicies.gender_rate;
-      if (desc) {
-        result.description = desc.flavor_text.replace(/(\r\n|\n|\r)/gm, ' ');
-      } else {
-        result.description = 'No description provided';
-      }
-
-      result.imageUrl = pokemon.sprites.front_default;
-      if (gender >= 0) {
-        if (gender > 4) {
-          result.gender = 'Female';
-          if (pokemon.sprites.front_female) {
-            result.imageUrl = pokemon.sprites.front_female;
-          }
-        } else {
-          result.gender = 'Male';
-        }
-      } else {
-        result.gender = 'Genderless';
-      }
-
-      result.stats_data = pokemon.stats.map(stat => stat.base_stat);
-      result.name = pokemon.name;
-      result.height = pokemon.height;
-      result.weight = pokemon.weight;
-      result.abilities = pokemon.abilities;
-      result.types = pokemon.types;
-      dispatch({
-        type: SEARCH_SUCCESS,
-        payload: {
-          pokemon: result
-        }
-      })
-    })
-    .catch(error => {
-      console.log('%cThere was an error while searching details for: ' + pokemon.name, "color: orangered;");
-      console.log(pokemon.species.url);
-      console.log(pokemon);
-      dispatch({
-        type: SEARCH_ERROR,
-        payload: {
-          error: error.toString()
-        }
-      })
-    })
 }

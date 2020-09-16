@@ -10,17 +10,18 @@
   width: 80%;
 }
 
-.search__input {
+.button--compare {
   background-color: var(--my-light-black);
   padding-left: 1rem;
   height: 2.5rem;
   border: 1px solid var(--my-light-black);
   border-radius: 5px;
   font-size: 1rem;
+  color: white;
 }
 
-.search__input::placeholder {
-  color: white;
+.button--compare:hover {
+  background-color: var(--my-dark-gray);
 }
 
 .details__content {
@@ -90,7 +91,7 @@
     align-items: center;
     gap: 1rem;
   }
-  .search__input {
+  .button--compare {
     width: 150px;
   }
   .details__content {
