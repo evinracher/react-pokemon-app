@@ -1,34 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from '../styles/Search.module.css';
 import { connect } from 'react-redux';
 import { show, stopShow } from '../redux/actions/globalActions';
-import {
-  initPokemon,
-  changeNameToSearch,
-  searchByName,
-} from '../redux/actions/pokemonActions';
-import { useDebounce } from 'use-debounce';
 const Search = (props) => {
-  const [searchDebounce] = useDebounce(props.name, 500);
-
-  useEffect(() => {
-    if (props.name != null) {
-      props.initPokemon();
-      props.show();
-      console.log("Searching now for: " + props.name);
-      props.search(props.name);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchDebounce])
-
   const handleChange = (event) => {
-    console.log()
-    props.changeNameToSearch(event.target.value);
+    // TODO
   }
 
   const handleBlur = (event) => {
+    // TODO: or maybe to change for an x
     console.log()
-    event.target.value = '';
+    // event.target.value = '';
   }
 
   return (
@@ -45,18 +27,15 @@ const Search = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    name: state.pokemon.nameToSearch,
-    pokemon: state.pokemon.pokemonSearched
+    // TODO
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    initPokemon: () => dispatch(initPokemon()),
+    // TODO
     show: () => dispatch(show()),
     stopShow: () => dispatch(stopShow()),
-    search: (name) => dispatch(searchByName(name)),
-    changeNameToSearch: (name) => dispatch(changeNameToSearch(name)),
   }
 }
 
