@@ -10,15 +10,11 @@
   flex-direction: column;
   gap: 2.5rem;
   justify-content: center;
-  /* border: 1px solid yellow; */
 }
 
 .loader {
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  bottom: 0%;
-  /* background-color: rgba(55, 55, 55, 0.5); */
+  display: flex;
+  justify-content: center;
 }
 
 @media(min-width: 577px) {
@@ -28,19 +24,10 @@
     flex-grow: 1;
     gap: 2.5rem;
   }
-  .loader {
-    width: 100%;
-    height: 40vh;
-    bottom: 0%;
-    /* background-color: rgba(55, 55, 55, 0.5); */
-  }
 }
 
 @media(min-width: 769px) {
   .pokemons {
     gap: 1.8rem;
-  }
-  .loader {
-    height: 10vh;
   }
 }
