@@ -17,7 +17,7 @@ const Search = (props) => {
     <div className={styles['search']}>
       <input
         className={styles['search__input']}
-        type="text"
+        type="search"
         placeholder="Search"
         onChange={handleChange}
         onBlur={handleBlur}></input>
