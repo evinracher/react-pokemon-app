@@ -5,14 +5,17 @@ import {
   LOADING
 } from '../actions/globalActions';
 
+// Start in this position to ilustrate something
+// const initialURL = 'https://pokeapi.co/api/v2/pokemon/?offset=980&limit=20';
+const initialURL = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20';
+
 const initialState = {
   isShowing: false,
   isComparing: false,
   isLoading: false,
-  loadingError: null,
-  nameToSearch: '',
   pokemonsList: [],
-  nextURL: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20'
+  currURL: initialURL,
+  nextURL: initialURL
 }
 
 // Global reducer
@@ -34,16 +37,16 @@ function global(state = initialState, action) {
     case UPDATE_POKEMONS:
       return {
         ...state,
-        isLoading: action.payload.isLoading,
-        nextURL: action.payload.nextURL,
-        pokemonsList: state.pokemonsList.concat(action.payload.pokemons)
+        isLoading: false,
+        pokemonsList: state.pokemonsList.concat(action.payload.pokemons),
+        nextURL: action.payload.nextURL
       }
 
     case LOADING:
       return {
         ...state,
-        isLoading: action.payload.isLoading,
-        loadingError: action.payload.loadingError
+        isLoading: true,
+        currURL: state.nextURL,
       }
     default:
       return state;

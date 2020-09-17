@@ -31,17 +31,16 @@ export const stopCompare = () => {
   }
 }
 
-export const updatePokemons = (nextURL) => async (dispatch) => {
+export const load = () => {
+  return {
+    type: LOADING
+  }
+}
+
+export const updatePokemons = (URL) => async (dispatch) => {
   try {
-    dispatch({
-      type: LOADING,
-      payload: {
-        isLoading: true,
-        loadingError: null,
-      }
-    })
-    let data = await fetch(nextURL).then(res => res.json());
-    console.log(data.next);
+
+    let data = await fetch(URL).then(res => res.json());
     const pokemons = await Promise.all(
       data.results.map((result) => {
         return getOnePokemon(result.url);
@@ -52,21 +51,12 @@ export const updatePokemons = (nextURL) => async (dispatch) => {
       type: UPDATE_POKEMONS,
       payload: {
         isLoading: false,
-        loadingError: null,
-        pokemons,
-        nextURL: data.next
+        nextURL: data.next,
+        pokemons
       }
     })
   } catch (error) {
     console.error('There was a problem in loading pokemons');
     console.error(error);
-
-    dispatch({
-      type: LOADING,
-      payload: {
-        isLoading: false,
-        loadingError: error,
-      }
-    })
   }
 }

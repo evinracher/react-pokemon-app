@@ -47,8 +47,21 @@ async function addPokemonDetails(pokemon) {
 
 // This function fetch a single pokemon, with the raw content plus imageUrl
 async function fetchOnePokemon(url) {
-  let rawPokemon = await fetch(url).then(res => res.json());
-  const formRes = await fetch(rawPokemon.forms[0].url).then(res => res.json());
-  rawPokemon.imageUrl = formRes.sprites.front_default;
-  return rawPokemon;
+  try {
+    let rawPokemon = await fetch(url).then(res => res.json());
+    if (rawPokemon.forms[0]) {
+      const formRes = await fetch(rawPokemon.forms[0].url).then(res => res.json());
+      if (formRes.sprites.front_default) {
+        rawPokemon.imageUrl = formRes.sprites.front_default;
+      } else {
+        rawPokemon.imageUrl = require('./images/whos_that_pokemon.png');
+      }
+    } else {
+      rawPokemon.imageUrl = require('./images/whos_that_pokemon.png');
+    }
+    return rawPokemon;
+  } catch (error) {
+    console.error("%cThere was an error fecthing one pokemon at: " + url, "color: orange;");
+    console.error(error);
+  }
 }
