@@ -1,4 +1,5 @@
 import { getOnePokemon } from '../../Utils';
+export const INIT = 'INIT';
 export const SHOW = 'SHOW';
 export const STOP_SHOW = 'STOP_SHOW';
 export const COMPARE = 'COMPARE';
@@ -8,7 +9,12 @@ export const LOADING = 'LOADING';
 export const SEARCH = 'SEARCH';
 export const STOP_SEARCH = 'STOP_SEARCH';
 
-// Uses the pokemonToShow
+export const initList = () => {
+  return {
+    type: INIT
+  }
+}
+
 export const show = (pokemonToShow, pokemonToCompare) => {
   return {
     type: SHOW,

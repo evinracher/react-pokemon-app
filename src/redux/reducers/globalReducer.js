@@ -1,4 +1,5 @@
 import {
+  INIT,
   SHOW,
   STOP_SHOW,
   COMPARE,
@@ -14,6 +15,7 @@ import {
 const initialURL = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20';
 
 const initialState = {
+  isInitializing: true,
   isShowing: false,
   isComparing: false,
   isLoading: false,
@@ -22,13 +24,30 @@ const initialState = {
   pokemonsFiltered: [],
   pokemonToShow: null,
   pokemonToCompare: null,
-  currURL: initialURL,
+  currURL: '',
   nextURL: initialURL
 }
 
 // Global reducer
 function global(state = initialState, action) {
   switch (action.type) {
+    case INIT:
+      console.log("Initializing");
+      console.log(state.pokemonsList.length === 0);
+      if (state.pokemonsList.length === 0) {
+        return {
+          ...state,
+          isLoading: true,
+          isInitializing: false,
+          currURL: state.nextURL,
+        }
+      } else {
+        return {
+          ...state,
+          isLoading: false,
+          isInitializing: false
+        }
+      }
     case SHOW:
       return {
         ...state,

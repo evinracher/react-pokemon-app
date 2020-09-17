@@ -24,6 +24,7 @@
   flex-wrap: wrap;
   flex-grow: 1;
   gap: 1.5rem;
+  align-content: flex-start;
 }
 
 .loader {

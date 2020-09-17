@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import Card from './Card';
 import styles from '../styles/Pokemons.module.css';
 import { connect } from 'react-redux';
-import { updatePokemons, load } from '../redux/actions/globalActions';
+import { updatePokemons, load, initList } from '../redux/actions/globalActions';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 import { SyncLoader } from 'react-spinners';
 
 const Pokemons = (props) => {
   const {
+    isInitializing,
     currURL,
     pokemons,
     isSearching,
@@ -15,16 +16,26 @@ const Pokemons = (props) => {
     isComparing,
     pokemonToShow,
     pokemonToCompare } = props; // attributes
-  const { update, load } = props; // functions
+  const { update, load, initList} = props; // functions
   const hasNextPage = props.nextURL !== null ? true : false;
 
   useEffect(() => {
-    update(currURL);
+    if (isLoading) {
+      console.log('Loading: ' + currURL);
+      update(currURL);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currURL])
 
+  useEffect(() => {
+    console.log('Mounted: ' + currURL);
+    initList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   function handleLoadMore() {
-    if (!isSearching) {
+    if (!isSearching && !isInitializing) {
+      console.log("handleLoadMore");
       load();
     }
   }
@@ -65,6 +76,7 @@ const mapStateToProps = (state) => {
   console.log("State in global: ");
   console.log(state);
   return {
+    isInitializing: state.global.isInitializing,
     isLoading: state.global.isLoading,
     isSearching: state.global.isSearching,
     nextURL: state.global.nextURL,
@@ -78,7 +90,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     update: (nextURL) => dispatch(updatePokemons(nextURL)),
-    load: () => dispatch(load())
+    load: () => dispatch(load()),
+    initList: () => dispatch(initList())
   }
 }
 
