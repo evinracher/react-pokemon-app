@@ -10,6 +10,7 @@ const Pokemons = (props) => {
   const {
     currURL,
     pokemons,
+    isSearching,
     isLoading,
     isComparing,
     pokemonToShow,
@@ -23,7 +24,9 @@ const Pokemons = (props) => {
   }, [currURL])
 
   function handleLoadMore() {
-    load();
+    if (!isSearching) {
+      load();
+    }
   }
 
   const infiniteRef = useInfiniteScroll({
@@ -51,7 +54,7 @@ const Pokemons = (props) => {
       </div>
       {isLoading &&
         <div className={styles['loader']}>
-          <SyncLoader className={styles['loader__spiner']}/>
+          <SyncLoader className={styles['loader__spiner']} />
           <h2 className={styles['loader__text']}>Loading...</h2>
         </div>}
     </div>
@@ -63,9 +66,9 @@ const mapStateToProps = (state) => {
   console.log(state);
   return {
     isLoading: state.global.isLoading,
+    isSearching: state.global.isSearching,
     nextURL: state.global.nextURL,
     currURL: state.global.currURL,
-    pokemons: state.global.pokemonsList,
     isComparing: state.global.isComparing,
     pokemonToShow: state.global.pokemonToShow,
     pokemonToCompare: state.global.pokemonToCompare

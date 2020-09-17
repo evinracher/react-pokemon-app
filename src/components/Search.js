@@ -1,16 +1,18 @@
 import React from 'react';
 import styles from '../styles/Search.module.css';
 import { connect } from 'react-redux';
-import { show, stopShow } from '../redux/actions/globalActions';
+import { show, stopShow, search, stopSearch } from '../redux/actions/globalActions';
 const Search = (props) => {
+  const { search, stopSearch, pokemonsList } = props;
   const handleChange = (event) => {
-    // TODO
-  }
-
-  const handleBlur = (event) => {
-    // TODO: or maybe to change for an x
-    console.log()
-    // event.target.value = '';
+    let name = event.target.value.trim().replace(/\s+/g, "-");
+    console.log(name);
+    console.log(name === '');
+    if (name === '') {
+      stopSearch();
+    }else {
+      search(name, pokemonsList);
+    }
   }
 
   return (
@@ -19,23 +21,24 @@ const Search = (props) => {
         className={styles['search__input']}
         type="search"
         placeholder="Search"
-        onChange={handleChange}
-        onBlur={handleBlur}></input>
+        onChange={handleChange}>
+      </input>
     </div>
   )
 }
 
 const mapStateToProps = (state) => {
   return {
-    // TODO
+    pokemonsList: state.global.pokemonsList
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // TODO
     show: () => dispatch(show()),
     stopShow: () => dispatch(stopShow()),
+    search: (name, pokemons) => dispatch(search(name, pokemons)),
+    stopSearch: () => dispatch(stopSearch()),
   }
 }
 

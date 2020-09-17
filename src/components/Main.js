@@ -6,21 +6,20 @@ import {
   Route,
 } from "react-router-dom";
 
-
 import Nav from './Nav';
 import Home from './Home';
 import Pokemons from './Pokemons';
 import Details from './Details/index';
 
 const Main = (props) => {
-  const { isShowing } = props;
-
+  const { isShowing, isSearching, pokemonsList, pokemonsFiltered } = props;
+  const pokemons = isSearching ? pokemonsFiltered: pokemonsList;
   return (
     <Router>
       <Nav />
       <Switch>
         <Route path="/pokemons">
-          <Pokemons />
+          <Pokemons pokemons={pokemons}/>
         </Route>
         <Route path="/">
           <Home />
@@ -33,7 +32,10 @@ const Main = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    isShowing: state.global.isShowing
+    isShowing: state.global.isShowing,
+    isSearching: state.global.isSearching,
+    pokemonsList: state.global.pokemonsList,
+    pokemonsFiltered: state.global.pokemonsFiltered
   }
 }
 

@@ -4,7 +4,9 @@ import {
   COMPARE,
   STOP_COMPARE,
   UPDATE_POKEMONS,
-  LOADING
+  LOADING,
+  SEARCH,
+  STOP_SEARCH
 } from '../actions/globalActions';
 
 // Start in this position to ilustrate something
@@ -15,7 +17,9 @@ const initialState = {
   isShowing: false,
   isComparing: false,
   isLoading: false,
+  isSearching: false,
   pokemonsList: [],
+  pokemonsFiltered: [],
   pokemonToShow: null,
   pokemonToCompare: null,
   currURL: initialURL,
@@ -49,7 +53,7 @@ function global(state = initialState, action) {
         isShowing: false,
         isComparing: true,
       }
-    
+
     case STOP_COMPARE:
       return {
         ...state,
@@ -70,6 +74,20 @@ function global(state = initialState, action) {
         ...state,
         isLoading: true,
         currURL: state.nextURL,
+      }
+
+    case SEARCH:
+      return {
+        ...state,
+        isSearching: true,
+        pokemonsFiltered: action.payload.pokemonsFiltered
+      }
+
+    case STOP_SEARCH:
+      return {
+        ...state,
+        isSearching: false,
+        pokemonsFiltered: null
       }
     default:
       return state;

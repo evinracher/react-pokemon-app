@@ -5,6 +5,8 @@ export const COMPARE = 'COMPARE';
 export const STOP_COMPARE = 'STOP_COMPARE';
 export const UPDATE_POKEMONS = 'UPDATE_POKEMONS';
 export const LOADING = 'LOADING';
+export const SEARCH = 'SEARCH';
+export const STOP_SEARCH = 'STOP_SEARCH';
 
 // Uses the pokemonToShow
 export const show = (pokemonToShow, pokemonToCompare) => {
@@ -62,5 +64,22 @@ export const updatePokemons = (URL) => async (dispatch) => {
   } catch (error) {
     console.error('There was a problem in loading pokemons');
     console.error(error);
+  }
+}
+
+
+export const search = (name, pokemons) => {
+  const pokemonsFiltered = pokemons.filter((pokemon) => pokemon.name.includes(name))
+  return {
+    type: SEARCH,
+    payload: {
+      pokemonsFiltered
+    }
+  }
+}
+
+export const stopSearch = () => {
+  return {
+    type: STOP_SEARCH
   }
 }
