@@ -22,7 +22,7 @@
 
 @media(min-width: 577px) {
   .details {
-    margin-top: auto;
+    margin-top: 4rem;
     height: auto;
   }
 }

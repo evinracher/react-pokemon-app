@@ -2,22 +2,34 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Modal from '../Modal';
 import ShowPokemon from './PokemonDetail';
+import ComparePokemons from './PokemonComparison';
 const Details = (props) => {
-  return (
-    // TODO
-    // ifsearching
-    // ShowPokemon
-    // if comparing
-    // comparePokemons
-    <Modal>
-      <ShowPokemon />
-    </Modal>
-  )
+  const { isComparing, pokemonToShow, pokemonToCompare } = props;
+  if (isComparing) {
+    console.log({pokemonToShow});
+    console.log({pokemonToCompare});
+    return (
+      <Modal>
+        <ComparePokemons
+          pokemonToShow={pokemonToShow}
+          pokemonToCompare={pokemonToCompare}
+        />
+      </Modal>
+    )
+  } else {
+    return (
+      <Modal>
+        <ShowPokemon pokemon={pokemonToShow} />
+      </Modal>
+    )
+  }
 }
 
 const mapStateToProps = (state) => {
   return {
-    // TODO
+    isComparing: state.global.isComparing,
+    pokemonToShow: state.global.pokemonToShow,
+    pokemonToCompare: state.global.pokemonToCompare
   }
 }
 

@@ -1,12 +1,14 @@
 .card {
   border: 1px solid var(--my-dark-gray);
   border-radius: 5px;
-  width: 90%;
+  width: 11.25rem;
+  min-height: 13rem;
   margin: auto;
   overflow: hidden;
 }
 
 .card__img-container {
+  height: 11.3rem;
   width: 100%;
 }
 
@@ -19,8 +21,7 @@
   background-color: var(--my-gray);
   text-align: center;
   border-top: 1px solid var(--my-dark-gray);
-  padding: 0.2rem;
-  height: 12%;
+  padding: 0.2rem 0.3rem;
 }
 
 .card__name {
@@ -31,18 +32,4 @@
   color: var(--my-black);
 }
 
-@media(min-width: 577px) {
-  .card__img-container {
-    height: 12rem;
-    width: 100%;
-  }
-  .card__img {
-    height: 100%;
-  }
-  .card {
-    border: 1px solid var(--my-dark-gray);
-    min-width: 100px;
-    max-width: 220px;
-    max-height: 235px;
-  }
-}
+@media(min-width: 577px) {}

@@ -1,6 +1,8 @@
 import {
   SHOW,
   STOP_SHOW,
+  COMPARE,
+  STOP_COMPARE,
   UPDATE_POKEMONS,
   LOADING
 } from '../actions/globalActions';
@@ -14,6 +16,8 @@ const initialState = {
   isComparing: false,
   isLoading: false,
   pokemonsList: [],
+  pokemonToShow: null,
+  pokemonToCompare: null,
   currURL: initialURL,
   nextURL: initialURL
 }
@@ -24,14 +28,33 @@ function global(state = initialState, action) {
     case SHOW:
       return {
         ...state,
-        isShowing: true
+        isShowing: true,
+        pokemonToShow: action.payload.pokemonToShow
+          ? action.payload.pokemonToShow
+          : state.pokemonToShow,
+        pokemonToCompare: action.payload.pokemonToCompare
+          ? action.payload.pokemonToCompare
+          : null
       }
 
     case STOP_SHOW:
       return {
         ...state,
         isShowing: false,
-        name: ''
+      }
+
+    case COMPARE:
+      return {
+        ...state,
+        isShowing: false,
+        isComparing: true,
+      }
+    
+    case STOP_COMPARE:
+      return {
+        ...state,
+        isShowing: false,
+        isComparing: false
       }
 
     case UPDATE_POKEMONS:

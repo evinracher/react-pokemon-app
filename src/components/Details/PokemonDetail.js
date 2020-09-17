@@ -2,10 +2,11 @@ import React from 'react';
 import styles from '../../styles/Details.module.css';
 // import { getClassNames } from '../../Utils';
 import { connect } from 'react-redux';
-import { stopShow } from '../../redux/actions/globalActions';
+import { stopShow, compare } from '../../redux/actions/globalActions';
 import Graphics from '../Graphics';
 const PokemonDetail = (props) => {
-  const { pokemon, close } = props;
+  const { pokemon } = props;
+  const { close, compare } = props; // state functions
 
   const handleClick = () => {
     close();
@@ -13,6 +14,7 @@ const PokemonDetail = (props) => {
 
   // TODO: Change to button
   const handleCompareClick = () => {
+    compare();
   }
 
   return (
@@ -23,12 +25,12 @@ const PokemonDetail = (props) => {
           <button className={styles['button--compare']}
             onClick={handleCompareClick}
           >
-          Compare to...
+            Compare to...
           </button>
         </div>
         <button className={styles['button--close']} onClick={handleClick}>x</button>
       </div>
-      <hr className={styles['break-line']}/>
+      <hr className={styles['break-line']} />
       <div className={styles['details__content']}>
         <div className={styles['info']}>
           <div className={styles['info__img-container']}>
@@ -82,10 +84,10 @@ const PokemonDetail = (props) => {
             </div>
           </div>
         </div>
-        <hr  className={styles['break-line']}/>
+        <hr className={styles['break-line']} />
         <div className={styles['stats']}>
-        {/* Add as many object as pokemons are */}
-          <Graphics dataset={[{data: pokemon.stats_data}]}/>
+          {/* Add as many object as pokemons are */}
+          <Graphics dataset={[{ data: pokemon.stats_data }]} />
         </div>
       </div>
     </div>
@@ -93,16 +95,14 @@ const PokemonDetail = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.pokemon);
   return {
-    name: state.pokemon.nameToSearch,
-    pokemon: state.pokemon.pokemonSearched,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     close: () => dispatch(stopShow()),
+    compare: () => dispatch(compare())
   }
 }
 

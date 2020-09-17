@@ -1,13 +1,25 @@
 import React, { useRef } from 'react';
 import styles from '../styles/Card.module.css';
+import { connect } from 'react-redux';
+import { show } from '../redux/actions/globalActions';
+// TODO: Delete the event listeners
 const Card = (props) => {
   const { name, imageUrl } = props.pokemon;
+  const { isComparing } = props; // state variables
+  const { showThisPokemon } = props; // state functions
   const selectedPokemon = useRef();
 
   const handleCardClick = (event) => {
     console.log('Click on: ');
     console.log(props.pokemon);
+    if (isComparing) {
+      console.log('To compare')
+      showThisPokemon(null, props.pokemon);
+    } else {
+      showThisPokemon(props.pokemon);
+    }
   }
+
   return (
     <div
       className={styles['card']}
@@ -23,4 +35,20 @@ const Card = (props) => {
   )
 }
 
-export default Card;
+const mapStateToProps = (state) => {
+  return {
+    isShowing: state.global.isShowing, // delete
+    isComparing: state.global.isComparing
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    showThisPokemon: (pokemonToShow, pokemonToCompare) => dispatch(show(pokemonToShow, pokemonToCompare)),
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Card)

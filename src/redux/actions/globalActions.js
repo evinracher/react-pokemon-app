@@ -7,9 +7,13 @@ export const UPDATE_POKEMONS = 'UPDATE_POKEMONS';
 export const LOADING = 'LOADING';
 
 // Uses the pokemonToShow
-export const show = () => {
+export const show = (pokemonToShow, pokemonToCompare) => {
   return {
-    type: SHOW
+    type: SHOW,
+    payload: {
+      pokemonToShow,
+      pokemonToCompare
+    }
   }
 }
 

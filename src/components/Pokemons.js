@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import Card from './Card';
 import styles from '../styles/Pokemons.module.css';
 import { connect } from 'react-redux';
@@ -7,7 +7,13 @@ import useInfiniteScroll from 'react-infinite-scroll-hook';
 import { SyncLoader } from 'react-spinners';
 
 const Pokemons = (props) => {
-  const { currURL, nextURL, pokemons, isLoading } = props; // attributes
+  const {
+    currURL,
+    pokemons,
+    isLoading,
+    isComparing,
+    pokemonToShow,
+    pokemonToCompare } = props; // attributes
   const { update, load } = props; // functions
   const hasNextPage = props.nextURL !== null ? true : false;
 
@@ -27,20 +33,27 @@ const Pokemons = (props) => {
   });
 
   return (
-    <div className={styles['pokemons-container']}>
-      <div className={styles['pokemons']} ref={infiniteRef}>
-        {
-          pokemons.map((pokemon) => {
-            return <Card key={pokemon.id} pokemon={pokemon} />
-          })
+    <div className={styles['pokemons']}>
+      <div className={styles['list-container']}>
+        {isComparing && pokemonToCompare === null &&
+          <div className={styles['comparing']}>
+            <p className={styles['comparing__title']}>Comparing pokemon</p>
+            <p className={styles['comparing__name']}>{pokemonToShow.name.toUpperCase()}</p>
+          </div>
         }
+        <div className={styles['list']} ref={infiniteRef}>
+          {
+            pokemons.map((pokemon) => {
+              return <Card key={pokemon.id} pokemon={pokemon} />
+            })
+          }
+        </div>
       </div>
-      <div className={styles['loader']}>
-        {isLoading && (<div>
-          <SyncLoader />
-          <p>Loading...</p>
-        </div>)}
-      </div>
+      {isLoading &&
+        <div className={styles['loader']}>
+          <SyncLoader className={styles['loader__spiner']}/>
+          <h2 className={styles['loader__text']}>Loading...</h2>
+        </div>}
     </div>
   )
 }
@@ -52,7 +65,10 @@ const mapStateToProps = (state) => {
     isLoading: state.global.isLoading,
     nextURL: state.global.nextURL,
     currURL: state.global.currURL,
-    pokemons: state.global.pokemonsList
+    pokemons: state.global.pokemonsList,
+    isComparing: state.global.isComparing,
+    pokemonToShow: state.global.pokemonToShow,
+    pokemonToCompare: state.global.pokemonToCompare
   }
 }
 
