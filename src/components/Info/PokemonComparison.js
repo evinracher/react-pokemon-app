@@ -1,7 +1,7 @@
 import React from 'react';
 // TODO: Separate specific css per file into Details
-import styles from '../../styles/Details.module.css';
-import comparison from '../../styles/Comparison.module.css';
+import styles from '../../styles/Info/Index.module.css';
+import comparison from '../../styles/Info/Comparison.module.css';
 // import { getClassNames } from '../../Utils';
 import { connect } from 'react-redux';
 import { stopCompare } from '../../redux/actions/globalActions';
@@ -20,19 +20,20 @@ const PokemonComparison = (props) => {
         </div>
         <button className={styles['button--close']} onClick={handleClick}>x</button>
       </div>
-      <div className={comparison['comparison__content']}>
-        <div className={comparison['comparison__images']}>
+      <hr className={styles['break-line']} />
+      <div className={comparison['content']}>
+        <div className={comparison['images']}>
           <img
-            className={comparison['comparison__img']}
+            className={comparison['img']}
             src={pokemonToShow.imageUrl}
             alt={`Pokemon ${pokemonToShow.name}`} />
           <img
-            className={comparison['comparison__img']}
+            className={comparison['img']}
             src={pokemonToCompare.imageUrl}
             alt={`Pokemon ${pokemonToCompare.name}`} />
         </div>
         <hr />
-        <div className={comparison['comparison__info']}>
+        <div className={comparison['info']}>
           <div className={comparison['info__row']}>
             <p>{pokemonToShow.height}m</p><p className={comparison['info__title']}>Height</p><p>{pokemonToCompare.height}m</p>
           </div>
@@ -56,7 +57,7 @@ const PokemonComparison = (props) => {
         </div>
         <hr />
       </div>
-      <div className={comparison['comparison__stats']}>
+      <div className={comparison['stats']}>
         <Graphics
           dataset={[
             { data: pokemonToShow.stats_data },

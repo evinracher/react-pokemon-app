@@ -1,31 +1,33 @@
-.comparison__content {
+.content {
   padding: 0 1rem;
 }
 
-.comparison__images {
+.images {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 11.3rem;
 }
 
-.comparison__img {
+.img {
   width: 186px;
+  height: 11.3rem;
   image-rendering: pixelated;
 }
 
-.comparison__info {
+.info {
   width: 100%;
 }
 
 .info__row {
-  display: flex;
+  display: grid;
   width: 100%;
-  justify-content: space-around;
+  grid-template-columns: 33% 33% 33%;
+  justify-items: center;
 }
 
 .info__title {
   font-weight: 700;
+  text-align: center;
 }
 
 .info__ability {
@@ -33,9 +35,8 @@
 }
 
 @media(min-width: 577px) {
-  .comparison__images {
+  .images {
     flex-direction: row;
-    /* align-items: center; */
     justify-content: space-around;
   }
 }

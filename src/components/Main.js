@@ -9,7 +9,7 @@ import {
 import Nav from './Nav';
 import Home from './Home';
 import Pokemons from './Pokemons';
-import Details from './Details/index';
+import Info from './Info/index';
 
 const Main = (props) => {
   const { isShowing, isSearching, pokemonsList, pokemonsFiltered } = props;
@@ -25,7 +25,7 @@ const Main = (props) => {
           <Home />
         </Route>
       </Switch>
-      {isShowing && <Details />}
+      {isShowing && <Info />}
     </Router>
   )
 }

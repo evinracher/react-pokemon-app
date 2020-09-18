@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/Details.module.css';
+import styles from '../../styles/Info/Index.module.css';
 // import { getClassNames } from '../../Utils';
 import { connect } from 'react-redux';
 import { stopShow, compare } from '../../redux/actions/globalActions';
