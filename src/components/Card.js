@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import styles from '../styles/Card.module.css';
 import { connect } from 'react-redux';
 import { show } from '../redux/actions/globalActions';
-// TODO: Delete the event listeners
 const Card = (props) => {
   const { name, imageUrl } = props.pokemon;
   const { isComparing } = props; // state variables
@@ -10,10 +9,7 @@ const Card = (props) => {
   const selectedPokemon = useRef();
 
   const handleCardClick = (event) => {
-    console.log('Click on: ');
-    console.log(props.pokemon);
     if (isComparing) {
-      console.log('To compare')
       showThisPokemon(null, props.pokemon);
     } else {
       showThisPokemon(props.pokemon);

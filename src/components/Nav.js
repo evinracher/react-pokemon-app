@@ -5,6 +5,7 @@ import {
   Link,
 } from "react-router-dom";
 import Search from "./Search"
+
 const Nav = () => {
   return (
     <div className={styles['nav-container']}>

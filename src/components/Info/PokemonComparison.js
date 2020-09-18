@@ -1,8 +1,6 @@
 import React from 'react';
-// TODO: Separate specific css per file into Details
 import styles from '../../styles/Info/Index.module.css';
 import comparison from '../../styles/Info/Comparison.module.css';
-// import { getClassNames } from '../../Utils';
 import { connect } from 'react-redux';
 import { stopCompare } from '../../redux/actions/globalActions';
 import Graphics from '../Graphics';
@@ -13,7 +11,7 @@ const PokemonComparison = (props) => {
   }
 
   return (
-    <div className={styles['pokemon__comparison']} >
+    <div className={styles['details__container']} >
       <div className={styles['header']}>
         <div className={styles['header__info']}>
           <h2>{(pokemonToShow.name + ' vs. ' + pokemonToCompare.name).toUpperCase()}</h2>
@@ -32,7 +30,7 @@ const PokemonComparison = (props) => {
             src={pokemonToCompare.imageUrl}
             alt={`Pokemon ${pokemonToCompare.name}`} />
         </div>
-        <hr />
+        <hr  className={styles['break-line']} />
         <div className={comparison['info']}>
           <div className={comparison['info__row']}>
             <p>{pokemonToShow.height}m</p><p className={comparison['info__title']}>Height</p><p>{pokemonToCompare.height}m</p>
@@ -55,7 +53,7 @@ const PokemonComparison = (props) => {
             </div>
           </div>
         </div>
-        <hr />
+        <hr  className={styles['break-line']} />
       </div>
       <div className={comparison['stats']}>
         <Graphics
@@ -68,10 +66,8 @@ const PokemonComparison = (props) => {
   )
 }
 
-
 const mapStateToProps = (state) => {
-  return {
-  }
+  return state;
 }
 
 const mapDispatchToProps = (dispatch) => {

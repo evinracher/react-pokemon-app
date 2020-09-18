@@ -8,7 +8,6 @@ const Graphics = (props) => {
   useEffect(() => {
     const ctx = canvas.current.getContext('2d');
     let datasets;
-    console.log(props.dataset)
     if (!props.dataset) {
       datasets = [
         {

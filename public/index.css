@@ -4,6 +4,7 @@
 }
 
 :root {
+  --my-white: rgb(255, 255, 255);
   --my-black: rgb(40, 40, 40);
   --my-light-black: rgb(140, 140, 140);
   --my-gray: rgb(240, 240, 240);

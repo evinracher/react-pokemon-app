@@ -4,7 +4,6 @@ import styles from '../styles/Pokemons.module.css';
 import { connect } from 'react-redux';
 import { updatePokemons, load, initList } from '../redux/actions/globalActions';
 import InfiniteScroll from 'react-infinite-scroll-component';
-
 import { SyncLoader } from 'react-spinners';
 
 const Pokemons = (props) => {
@@ -22,22 +21,18 @@ const Pokemons = (props) => {
 
   useEffect(() => {
     if (isLoading) {
-      console.log('Loading: ' + currURL);
       update(currURL);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currURL])
 
   useEffect(() => {
-    console.log('Mounted: ' + currURL);
     initList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function handleLoadMore() {
-    console.log("scroll");
     if (!isSearching && !isInitializing) {
-      console.log("handleLoadMore");
       load();
     }
   }
@@ -45,7 +40,7 @@ const Pokemons = (props) => {
   return (
     <div className={styles['pokemons']}>
       <InfiniteScroll
-        dataLength={pokemons.length} //This is important field to render the next data
+        dataLength={pokemons.length}
         next={handleLoadMore}
         hasMore={hasNextPage}
       >
@@ -76,8 +71,6 @@ const Pokemons = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log("State in global: ");
-  console.log(state);
   return {
     isInitializing: state.global.isInitializing,
     isLoading: state.global.isLoading,

@@ -2,15 +2,13 @@ import React, { useRef } from 'react';
 import styles from '../styles/Search.module.css';
 import { connect } from 'react-redux';
 import { show, stopShow, search, stopSearch } from '../redux/actions/globalActions';
+
 const Search = (props) => {
   const { search, stopSearch, pokemonsList } = props;
   const input = useRef();
   const handleChange = (event) => {
     let name = event.target.value.trim().replace(/\s+/g, "-");
-    console.log(name);
-    console.log(name === '');
     if (name === '') {
-      console.log('Stoping...')
       stopSearch();
     } else {
       search(name, pokemonsList);

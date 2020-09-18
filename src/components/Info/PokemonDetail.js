@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../../styles/Info/Index.module.css';
-// import { getClassNames } from '../../Utils';
+import details from '../../styles/Info/Details.module.css';
+import { getClassNames } from '../../Utils';
 import { connect } from 'react-redux';
 import { stopShow, compare } from '../../redux/actions/globalActions';
 import Graphics from '../Graphics';
@@ -12,17 +13,16 @@ const PokemonDetail = (props) => {
     close();
   }
 
-  // TODO: Change to button
   const handleCompareClick = () => {
     compare();
   }
 
   return (
-    <div className={styles['pokemon__details']} >
+    <div className={getClassNames(details, ['details__container'])} >
       <div className={styles['header']}>
         <div className={styles['header__info']}>
           <h2>{pokemon.name.toUpperCase()}</h2>
-          <button className={styles['button--compare']}
+          <button className={details['button--compare']}
             onClick={handleCompareClick}
           >
             Compare to...
@@ -31,51 +31,51 @@ const PokemonDetail = (props) => {
         <button className={styles['button--close']} onClick={handleClick}>x</button>
       </div>
       <hr className={styles['break-line']} />
-      <div className={styles['details__content']}>
-        <div className={styles['info']}>
-          <div className={styles['info__img-container']}>
+      <div className={details['content']}>
+        <div className={details['info']}>
+          <div className={details['info__img-container']}>
             <img
-              className={styles['info__img']}
+              className={details['info__img']}
               src={(pokemon.imageUrl)}
               alt={`Pokemon ${pokemon.name}`} />
           </div>
-          <div className={styles['info__content']}>
-            <p className={styles['info__text']}>{pokemon.description}</p>
+          <div className={details['info__content']}>
+            <p className={details['info__text']}>{pokemon.description}</p>
             <hr />
-            <div className={styles['info__attributes']}>
-              <div className={styles['info__attribute']}>
-                <strong className={styles['info__text']}>Height</strong>
-                <p className={styles['info__text']}>{pokemon.height}m</p>
+            <div className={details['info__attributes']}>
+              <div className={details['info__attribute']}>
+                <strong className={details['info__text']}>Height</strong>
+                <p className={details['info__text']}>{pokemon.height}m</p>
               </div>
-              <div className={styles['info__attribute']}>
-                <strong className={styles['info__text']}>Weight</strong>
-                <p className={styles['info__text']}>{pokemon.weight}kg</p>
+              <div className={details['info__attribute']}>
+                <strong className={details['info__text']}>Weight</strong>
+                <p className={details['info__text']}>{pokemon.weight}kg</p>
               </div>
-              <div className={styles['info__attribute']}>
-                <strong className={styles['info__text']}>Gender</strong>
-                <p className={styles['info__text']}>{pokemon.gender}</p>
+              <div className={details['info__attribute']}>
+                <strong className={details['info__text']}>Gender</strong>
+                <p className={details['info__text']}>{pokemon.gender}</p>
               </div>
             </div>
-            <div className={styles['info__attributes']}>
-              <div className={styles['info__attribute']}>
-                <strong className={styles['info__text']}>Abilities</strong>
+            <div className={details['info__attributes']}>
+              <div className={details['info__attribute']}>
+                <strong className={details['info__text']}>Abilities</strong>
                 <ul>
                   {pokemon.abilities.map((item, index) =>
                     <li
                       key={item + index}
-                      className={styles['info__text']}
+                      className={details['info__text']}
                     >
                       {item.ability.name}
                     </li>)}
                 </ul>
               </div>
-              <div className={styles['info__attribute']}>
-                <strong className={styles['info__text']}>Type</strong>
+              <div className={details['info__attribute']}>
+                <strong className={details['info__text']}>Type</strong>
                 <ul>
                   {pokemon.types.map((item, index) =>
                     <li
                       key={item + index}
-                      className={styles['info__text']}
+                      className={details['info__text']}
                     >
                       {item.type.name}
                     </li>)}
@@ -86,7 +86,6 @@ const PokemonDetail = (props) => {
         </div>
         <hr className={styles['break-line']} />
         <div className={styles['stats']}>
-          {/* Add as many object as pokemons are */}
           <Graphics dataset={[{ data: pokemon.stats_data }]} />
         </div>
       </div>
@@ -95,8 +94,7 @@ const PokemonDetail = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  return {
-  }
+  return state;
 }
 
 const mapDispatchToProps = (dispatch) => {

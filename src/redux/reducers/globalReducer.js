@@ -28,12 +28,9 @@ const initialState = {
   nextURL: initialURL
 }
 
-// Global reducer
 function global(state = initialState, action) {
   switch (action.type) {
     case INIT:
-      console.log("Initializing");
-      console.log(state.pokemonsList.length === 0);
       if (state.pokemonsList.length === 0) {
         return {
           ...state,

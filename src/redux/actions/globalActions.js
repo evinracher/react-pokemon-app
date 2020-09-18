@@ -73,7 +73,6 @@ export const updatePokemons = (URL) => async (dispatch) => {
   }
 }
 
-
 export const search = (name, pokemons) => {
   const pokemonsFiltered = pokemons.filter((pokemon) => pokemon.name.includes(name))
   return {

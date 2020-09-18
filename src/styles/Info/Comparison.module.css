@@ -25,6 +25,10 @@
   justify-items: center;
 }
 
+.info__row p {
+  margin: 0.5rem 0;
+}
+
 .info__title {
   font-weight: 700;
   text-align: center;

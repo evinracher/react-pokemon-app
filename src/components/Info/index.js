@@ -6,8 +6,6 @@ import ComparePokemons from './PokemonComparison';
 const Details = (props) => {
   const { isComparing, pokemonToShow, pokemonToCompare } = props;
   if (isComparing) {
-    console.log({pokemonToShow});
-    console.log({pokemonToCompare});
     return (
       <Modal>
         <ComparePokemons
@@ -33,10 +31,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    // TODO
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Details);
+export default connect(mapStateToProps)(Details);

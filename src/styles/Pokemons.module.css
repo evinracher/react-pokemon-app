@@ -14,8 +14,9 @@
   border-radius: 5px;
   overflow: hidden;
   z-index: 2;
-  background-color: white;
+  background-color: var(--my-white);
   margin: 1rem 15%;
+  box-shadow: 0 2px 10px 5px var(--my-gray);
 }
 
 .list {

@@ -13,13 +13,13 @@ import Info from './Info/index';
 
 const Main = (props) => {
   const { isShowing, isSearching, pokemonsList, pokemonsFiltered } = props;
-  const pokemons = isSearching ? pokemonsFiltered: pokemonsList;
+  const pokemons = isSearching ? pokemonsFiltered : pokemonsList;
   return (
     <Router>
       <Nav />
       <Switch>
         <Route path="/pokemons">
-          <Pokemons pokemons={pokemons}/>
+          <Pokemons pokemons={pokemons} />
         </Route>
         <Route path="/">
           <Home />
