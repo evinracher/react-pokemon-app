@@ -106,7 +106,7 @@ function global(state = initialState, action) {
       return {
         ...state,
         isSearching: false,
-        pokemonsFiltered: null
+        pokemonsFiltered: []
       }
     default:
       return state;

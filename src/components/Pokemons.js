@@ -34,6 +34,7 @@ const Pokemons = (props) => {
   }, [])
 
   function handleLoadMore() {
+    console.log("scroll");
     if (!isSearching && !isInitializing) {
       console.log("handleLoadMore");
       load();
