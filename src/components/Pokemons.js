@@ -3,7 +3,8 @@ import Card from './Card';
 import styles from '../styles/Pokemons.module.css';
 import { connect } from 'react-redux';
 import { updatePokemons, load, initList } from '../redux/actions/globalActions';
-import useInfiniteScroll from 'react-infinite-scroll-hook';
+import InfiniteScroll from 'react-infinite-scroll-component';
+
 import { SyncLoader } from 'react-spinners';
 
 const Pokemons = (props) => {
@@ -41,29 +42,30 @@ const Pokemons = (props) => {
     }
   }
 
-  const infiniteRef = useInfiniteScroll({
-    loading: isLoading,
-    hasNextPage,
-    onLoadMore: handleLoadMore,
-  });
-
   return (
-    <div className={styles['pokemons']} ref={infiniteRef}>
-      <div className={styles['list-container']}>
-        {isComparing && pokemonToCompare === null &&
-          <div className={styles['comparing']}>
-            <p className={styles['comparing__title']}>Comparing pokemon</p>
-            <p className={styles['comparing__name']}>{pokemonToShow.name.toUpperCase()}</p>
-          </div>
-        }
-        <div className={styles['list']}>
-          {
-            pokemons.map((pokemon) => {
-              return <Card key={pokemon.id} pokemon={pokemon} />
-            })
+    <div className={styles['pokemons']}>
+      <InfiniteScroll
+        dataLength={pokemons.length} //This is important field to render the next data
+        next={handleLoadMore}
+        hasMore={hasNextPage}
+      >
+        <div className={styles['list-container']}>
+          {isComparing && pokemonToCompare === null &&
+            <div className={styles['comparing']}>
+              <p className={styles['comparing__title']}>Comparing pokemon</p>
+              <p className={styles['comparing__name']}>{pokemonToShow.name.toUpperCase()}</p>
+            </div>
           }
+
+          <div className={styles['list']}>
+            {
+              pokemons.map((pokemon) => {
+                return <Card key={pokemon.id} pokemon={pokemon} />
+              })
+            }
+          </div>
         </div>
-      </div>
+      </InfiniteScroll>
       {isLoading &&
         <div className={styles['loader']}>
           <SyncLoader className={styles['loader__spiner']} />

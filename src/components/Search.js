@@ -25,6 +25,7 @@ const Search = (props) => {
     } else {
       search(name, pokemonsList);
     }
+    input.current.blur();
   }
 
   return (
