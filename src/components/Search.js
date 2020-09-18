@@ -13,7 +13,6 @@ const Search = (props) => {
     } else {
       search(name, pokemonsList);
     }
-    console.dir(input.current.attributes);
   }
   const handleSubmit = (event) => {
     event.preventDefault();

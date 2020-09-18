@@ -27,7 +27,7 @@ const Graphics = (props) => {
       data.backgroundColor = colors[index % colorsLength];
     })
 
-    const myChart = new Chart(ctx, {
+    new Chart(ctx, {
       labels: '',
       type: 'bar',
       data: {
