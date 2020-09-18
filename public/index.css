@@ -20,7 +20,7 @@ body {
   height: 100%;
 }
 
-p, h1, h2, h3, a, strong, li {
+p, h1, h2, h3, a, strong, li, table {
   font-family: "Roboto", sans-serif;
   color: var(--my-black);
 }
