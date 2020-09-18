@@ -18,6 +18,7 @@ const Search = (props) => {
     console.dir(input.current.attributes);
   }
   const handleSubmit = (event) => {
+    event.preventDefault();
     let name = input.current.value.trim().replace(/\s+/g, "-");
     if (name === '') {
       stopSearch();
@@ -34,7 +35,6 @@ const Search = (props) => {
           type="search"
           id="mySearch"
           name="q"
-          results={5}
           placeholder="Search"
           onChange={handleChange}
           ref={input}

@@ -16,7 +16,7 @@ const Pokemons = (props) => {
     isComparing,
     pokemonToShow,
     pokemonToCompare } = props; // attributes
-  const { update, load, initList} = props; // functions
+  const { update, load, initList } = props; // functions
   const hasNextPage = props.nextURL !== null ? true : false;
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const Pokemons = (props) => {
   });
 
   return (
-    <div className={styles['pokemons']}>
+    <div className={styles['pokemons']} ref={infiniteRef}>
       <div className={styles['list-container']}>
         {isComparing && pokemonToCompare === null &&
           <div className={styles['comparing']}>
@@ -56,7 +56,7 @@ const Pokemons = (props) => {
             <p className={styles['comparing__name']}>{pokemonToShow.name.toUpperCase()}</p>
           </div>
         }
-        <div className={styles['list']} ref={infiniteRef}>
+        <div className={styles['list']}>
           {
             pokemons.map((pokemon) => {
               return <Card key={pokemon.id} pokemon={pokemon} />
