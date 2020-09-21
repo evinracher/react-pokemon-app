@@ -15,7 +15,7 @@ const Main = (props) => {
   const { isShowing, isSearching, pokemonsList, pokemonsFiltered } = props;
   const pokemons = isSearching ? pokemonsFiltered : pokemonsList;
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Nav />
       <Switch>
         <Route path="/pokemons">
