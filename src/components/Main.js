@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
-  BrowserRouter as Router,
+  HashRouter,
   Switch,
   Route,
 } from "react-router-dom";
@@ -16,7 +16,7 @@ const Main = (props) => {
   const pokemons = isSearching ? pokemonsFiltered : pokemonsList;
   console.log(process.env.PUBLIC_URL);
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <HashRouter basename={process.env.PUBLIC_URL}>
       <Nav />
       <Switch>
         <Route path='/'>
@@ -27,7 +27,7 @@ const Main = (props) => {
         </Route>
       </Switch>
       {isShowing && <Info />}
-    </Router>
+    </HashRouter>
   )
 }
 

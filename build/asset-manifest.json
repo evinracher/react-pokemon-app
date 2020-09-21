@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/pokemon-react-app/static/css/main.228ad90f.chunk.css",
-    "main.js": "/pokemon-react-app/static/js/main.aaa75328.chunk.js",
-    "main.js.map": "/pokemon-react-app/static/js/main.aaa75328.chunk.js.map",
+    "main.js": "/pokemon-react-app/static/js/main.65cf8287.chunk.js",
+    "main.js.map": "/pokemon-react-app/static/js/main.65cf8287.chunk.js.map",
     "runtime-main.js": "/pokemon-react-app/static/js/runtime-main.5f339910.js",
     "runtime-main.js.map": "/pokemon-react-app/static/js/runtime-main.5f339910.js.map",
-    "static/js/2.a4ad6b3b.chunk.js": "/pokemon-react-app/static/js/2.a4ad6b3b.chunk.js",
-    "static/js/2.a4ad6b3b.chunk.js.map": "/pokemon-react-app/static/js/2.a4ad6b3b.chunk.js.map",
+    "static/js/2.1f8b7d37.chunk.js": "/pokemon-react-app/static/js/2.1f8b7d37.chunk.js",
+    "static/js/2.1f8b7d37.chunk.js.map": "/pokemon-react-app/static/js/2.1f8b7d37.chunk.js.map",
     "index.html": "/pokemon-react-app/index.html",
-    "precache-manifest.d12fb70ef5c09233f27f452c8eb64ba4.js": "/pokemon-react-app/precache-manifest.d12fb70ef5c09233f27f452c8eb64ba4.js",
+    "precache-manifest.948e481a2acc79e65a591ce1b645e349.js": "/pokemon-react-app/precache-manifest.948e481a2acc79e65a591ce1b645e349.js",
     "service-worker.js": "/pokemon-react-app/service-worker.js",
     "static/css/main.228ad90f.chunk.css.map": "/pokemon-react-app/static/css/main.228ad90f.chunk.css.map",
-    "static/js/2.a4ad6b3b.chunk.js.LICENSE.txt": "/pokemon-react-app/static/js/2.a4ad6b3b.chunk.js.LICENSE.txt",
+    "static/js/2.1f8b7d37.chunk.js.LICENSE.txt": "/pokemon-react-app/static/js/2.1f8b7d37.chunk.js.LICENSE.txt",
     "static/media/whos_that_pokemon.png": "/pokemon-react-app/static/media/whos_that_pokemon.50ab3c9f.png"
   },
   "entrypoints": [
     "static/js/runtime-main.5f339910.js",
-    "static/js/2.a4ad6b3b.chunk.js",
+    "static/js/2.1f8b7d37.chunk.js",
     "static/css/main.228ad90f.chunk.css",
-    "static/js/main.aaa75328.chunk.js"
+    "static/js/main.65cf8287.chunk.js"
   ]
 }
