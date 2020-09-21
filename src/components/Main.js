@@ -19,7 +19,7 @@ const Main = (props) => {
     <Router basename={process.env.PUBLIC_URL}>
       <Nav />
       <Switch>
-        <Route path={`${process.env.PUBLIC_URL}/`}>
+        <Route path='/'>
           <Home />
         </Route>
         <Route path={`${process.env.PUBLIC_URL}/pokemons`}>

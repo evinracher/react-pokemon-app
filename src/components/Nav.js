@@ -12,10 +12,10 @@ const Nav = () => {
       <nav className={styles['nav']}>
         <ul className={styles['nav__items']}>
           <li className={styles['nav__item']}>
-            <Link className={getClassNames(styles, ['nav__link', 'nav__link--home'])} to={`${process.env.PUBLIC_URL}/`}>PokéApp</Link>
+            <Link className={getClassNames(styles, ['nav__link', 'nav__link--home'])} to='/'>PokéApp</Link>
           </li>
           <li className={styles['nav__item']}>
-            <Link className={getClassNames(styles, ['nav__link', 'nav__link--pokemons'])} to={`${process.env.PUBLIC_URL}/pokemons`}>Pokemons</Link>
+            <Link className={getClassNames(styles, ['nav__link', 'nav__link--pokemons'])} to='/pokemons'>Pokemons</Link>
           </li>
         </ul>
       </nav>
