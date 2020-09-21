@@ -14,15 +14,16 @@ import Info from './Info/index';
 const Main = (props) => {
   const { isShowing, isSearching, pokemonsList, pokemonsFiltered } = props;
   const pokemons = isSearching ? pokemonsFiltered : pokemonsList;
+  console.log(process.env.PUBLIC_URL);
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <Nav />
       <Switch>
-        <Route path="/pokemons">
-          <Pokemons pokemons={pokemons} />
-        </Route>
-        <Route path="/">
+        <Route path={`${process.env.PUBLIC_URL}/`}>
           <Home />
+        </Route>
+        <Route path={`${process.env.PUBLIC_URL}/pokemons`}>
+          <Pokemons pokemons={pokemons} />
         </Route>
       </Switch>
       {isShowing && <Info />}
