@@ -1,0 +1,97 @@
+.pokemons {
+  position: relative;
+}
+
+.list-container {
+  padding: 1rem;
+  min-height: 100vh;
+}
+
+.comparing {
+  position: fixed;
+  top: 6rem;
+  left: 20%;
+  width: 60%;
+  border: 1px solid var(--my-dark-gray);
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 2;
+  background-color: var(--my-white);
+  margin: 1rem 0;
+  box-shadow: 0 2px 10px 5px var(--my-gray);
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  gap: 1.5rem;
+  align-content: flex-start;
+}
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.loader div {
+  display: flex;
+  justify-content: center;
+}
+
+.comparing__title {
+  padding: 0.5rem;
+  margin: 0;
+  font-weight: 700;
+  border-bottom: 1px solid var(--my-dark-gray);
+  color: var(--my-light-black);
+}
+
+.comparing__name {
+  padding: 0 0.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: var(--my-black);
+}
+
+@media(min-width: 577px) {
+  .list-container {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 22% 56% 22%;
+    padding: 0.5rem 0;
+  }
+  .list {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    gap: 0.5rem;
+  }
+  .comparing {
+    height: fit-content;
+    width: fit-content;
+    margin: 0.5rem;
+    top: 3.8rem;
+    left: auto;
+    right: 0;
+    grid-column-start: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+}
+
+@media(min-width: 769px) {
+  .list-container {
+    grid-template-columns: 15% 70% 15%;
+  }
+  .list {
+    gap: 1.5rem;
+  }
+}

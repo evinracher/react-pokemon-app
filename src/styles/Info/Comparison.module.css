@@ -1,0 +1,46 @@
+.content {
+  padding: 0 1rem;
+}
+
+.images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img {
+  width: 186px;
+  height: 11.3rem;
+  image-rendering: pixelated;
+}
+
+.info {
+  width: 100%;
+}
+
+.info__row {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 33% 33% 33%;
+  justify-items: center;
+}
+
+.info__row p {
+  margin: 0.5rem 0;
+}
+
+.info__title {
+  font-weight: 700;
+  text-align: center;
+}
+
+.info__ability {
+  text-align: center;
+}
+
+@media(min-width: 577px) {
+  .images {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}

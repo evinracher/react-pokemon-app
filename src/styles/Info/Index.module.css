@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.header__info {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.button--close {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--my-light-black);
+}
+
+.button--close:active, .button--close:hover {
+  color: var(--my-black);
+  cursor: pointer;
+}
+
+@media(min-width: 577px) {
+  .break-line {
+    margin: 0;
+  }
+  .header__info {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+}

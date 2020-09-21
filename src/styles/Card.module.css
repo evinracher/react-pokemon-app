@@ -1,0 +1,35 @@
+.card {
+  border: 1px solid var(--my-dark-gray);
+  border-radius: 5px;
+  width: 11.25rem;
+  min-height: 13rem;
+  margin: auto;
+  overflow: hidden;
+}
+
+.card__img-container {
+  height: 11.3rem;
+  width: 100%;
+}
+
+.card__img {
+  width: 100%;
+  image-rendering: pixelated;
+}
+
+.card__description {
+  background-color: var(--my-gray);
+  text-align: center;
+  border-top: 1px solid var(--my-dark-gray);
+  padding: 0.2rem 0.3rem;
+}
+
+.card__name {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: var(--my-black);
+}
+
+@media(min-width: 577px) {}

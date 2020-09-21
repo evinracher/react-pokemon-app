@@ -1,0 +1,32 @@
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background: var(--modal-color);
+  display: flex;
+  align-items: center;
+  overflow: auto;
+  z-index: 3;
+}
+
+.details {
+  background-color: var(--my-white);
+  width: 100%;
+  margin: auto;
+  border-radius: 5px;
+  overflow: scroll;
+}
+
+@media(min-width: 577px) {
+  .details {
+    margin-top: 2rem;
+    height: auto;
+  }
+}
+
+@media(min-width: 769px) {
+  .details {
+    max-width: 620px;
+  }
+}
