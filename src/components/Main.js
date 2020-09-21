@@ -16,7 +16,7 @@ const Main = (props) => {
   const pokemons = isSearching ? pokemonsFiltered : pokemonsList;
   console.log(process.env.PUBLIC_URL);
   return (
-    <Router basename={'/pokemon-react-app'}>
+    <Router basename={process.env.PUBLIC_URL}>
       <Nav />
       <Switch>
         <Route path={`${process.env.PUBLIC_URL}/`}>

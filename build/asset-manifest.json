@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "./static/css/main.228ad90f.chunk.css",
-    "main.js": "./static/js/main.47eafa56.chunk.js",
-    "main.js.map": "./static/js/main.47eafa56.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.d205d416.js",
-    "runtime-main.js.map": "./static/js/runtime-main.d205d416.js.map",
-    "static/js/2.a4ad6b3b.chunk.js": "./static/js/2.a4ad6b3b.chunk.js",
-    "static/js/2.a4ad6b3b.chunk.js.map": "./static/js/2.a4ad6b3b.chunk.js.map",
-    "index.html": "./index.html",
-    "precache-manifest.d81940062c19770a8be49ec27918de69.js": "./precache-manifest.d81940062c19770a8be49ec27918de69.js",
-    "service-worker.js": "./service-worker.js",
-    "static/css/main.228ad90f.chunk.css.map": "./static/css/main.228ad90f.chunk.css.map",
-    "static/js/2.a4ad6b3b.chunk.js.LICENSE.txt": "./static/js/2.a4ad6b3b.chunk.js.LICENSE.txt",
-    "static/media/whos_that_pokemon.png": "./static/media/whos_that_pokemon.50ab3c9f.png"
+    "main.css": "/pokemon-react-app/static/css/main.228ad90f.chunk.css",
+    "main.js": "/pokemon-react-app/static/js/main.8104c434.chunk.js",
+    "main.js.map": "/pokemon-react-app/static/js/main.8104c434.chunk.js.map",
+    "runtime-main.js": "/pokemon-react-app/static/js/runtime-main.5f339910.js",
+    "runtime-main.js.map": "/pokemon-react-app/static/js/runtime-main.5f339910.js.map",
+    "static/js/2.a4ad6b3b.chunk.js": "/pokemon-react-app/static/js/2.a4ad6b3b.chunk.js",
+    "static/js/2.a4ad6b3b.chunk.js.map": "/pokemon-react-app/static/js/2.a4ad6b3b.chunk.js.map",
+    "index.html": "/pokemon-react-app/index.html",
+    "precache-manifest.dc71151574bc8bb5ebc9fa1b6fa3ccd8.js": "/pokemon-react-app/precache-manifest.dc71151574bc8bb5ebc9fa1b6fa3ccd8.js",
+    "service-worker.js": "/pokemon-react-app/service-worker.js",
+    "static/css/main.228ad90f.chunk.css.map": "/pokemon-react-app/static/css/main.228ad90f.chunk.css.map",
+    "static/js/2.a4ad6b3b.chunk.js.LICENSE.txt": "/pokemon-react-app/static/js/2.a4ad6b3b.chunk.js.LICENSE.txt",
+    "static/media/whos_that_pokemon.png": "/pokemon-react-app/static/media/whos_that_pokemon.50ab3c9f.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.d205d416.js",
+    "static/js/runtime-main.5f339910.js",
     "static/js/2.a4ad6b3b.chunk.js",
     "static/css/main.228ad90f.chunk.css",
-    "static/js/main.47eafa56.chunk.js"
+    "static/js/main.8104c434.chunk.js"
   ]
 }
