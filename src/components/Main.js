@@ -18,7 +18,6 @@ const Main = (props) => {
       <Nav />
       <Route path='/' exact component={Home} />
       <Route path='/pokemons' component={Pokemons} />
-      <Home />
       {isShowing && <Info />}
     </HashRouter>
   )
