@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {
   HashRouter,
-  Switch,
   Route,
 } from "react-router-dom";
 
@@ -12,20 +11,14 @@ import Pokemons from './Pokemons';
 import Info from './Info/index';
 
 const Main = (props) => {
-  const { isShowing, isSearching, pokemonsList, pokemonsFiltered } = props;
-  const pokemons = isSearching ? pokemonsFiltered : pokemonsList;
+  const { isShowing } = props;
   console.log(process.env.PUBLIC_URL);
   return (
-    <HashRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter>
       <Nav />
-      <Switch>
-        <Route path='/'>
-          <Home />
-        </Route>
-        <Route path={`${process.env.PUBLIC_URL}/pokemons`}>
-          <Pokemons pokemons={pokemons} />
-        </Route>
-      </Switch>
+      <Route path='/' exact component={Home} />
+      <Route path='/pokemons' component={Pokemons} />
+      <Home />
       {isShowing && <Info />}
     </HashRouter>
   )

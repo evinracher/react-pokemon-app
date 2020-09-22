@@ -10,14 +10,18 @@ const Pokemons = (props) => {
   const {
     isInitializing,
     currURL,
-    pokemons,
     isSearching,
     isLoading,
     isComparing,
     pokemonToShow,
-    pokemonToCompare } = props; // attributes
+    pokemonToCompare,
+    pokemonsFiltered,
+    pokemonsList
+   } = props; // attributes
   const { update, load, initList } = props; // functions
   const hasNextPage = props.nextURL !== null ? true : false;
+  const pokemons = isSearching ? pokemonsFiltered : pokemonsList;
+
 
   useEffect(() => {
     if (isLoading) {
@@ -79,7 +83,9 @@ const mapStateToProps = (state) => {
     currURL: state.global.currURL,
     isComparing: state.global.isComparing,
     pokemonToShow: state.global.pokemonToShow,
-    pokemonToCompare: state.global.pokemonToCompare
+    pokemonToCompare: state.global.pokemonToCompare,
+    pokemonsFiltered: state.global.pokemonsFiltered,
+    pokemonsList: state.global.pokemonsList
   }
 }
 
