@@ -68,11 +68,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 
-## Aditional comments
+## Additional comments
 
 ### Deploy
 
 `npm run deploy`
 
-You must change the property homepage-github to homepage on the package.json file. This is build onto the gh-pages, from where it is server the page on the url:
+You must change the property homepage-github to homepage on the package.json file. This command builds in the gh-pages branch, from where it is servered the page on the url:
 https://evinracher.github.io/pokemon-react-app/#/
