@@ -1,4 +1,4 @@
-import { getOnePokemon } from '../../Utils';
+import { getOnePokemon, getPokemonImageUrl } from '../../Utils';
 export const INIT = 'INIT';
 export const SHOW = 'SHOW';
 export const STOP_SHOW = 'STOP_SHOW';
@@ -15,14 +15,21 @@ export const initList = () => {
   }
 }
 
-export const show = (pokemonToShow, pokemonToCompare) => {
-  return {
+export const show = (toShow, toCompare) => async (dispatch) => {
+  let pokemonToShow = toShow
+    ? await getOnePokemon(toShow.url)
+    : null;
+  let pokemonToCompare = toCompare
+    ? await getOnePokemon(toCompare.url)
+    : null;
+
+  dispatch({
     type: SHOW,
     payload: {
       pokemonToShow,
       pokemonToCompare
     }
-  }
+  });
 }
 
 export const stopShow = () => {
@@ -51,11 +58,14 @@ export const load = () => {
 
 export const updatePokemons = (URL) => async (dispatch) => {
   try {
-
     let data = await fetch(URL).then(res => res.json());
     const pokemons = await Promise.all(
-      data.results.map((result) => {
-        return getOnePokemon(result.url);
+      data.results.map(async (result) => {
+        return {
+          url: result.url,
+          name: result.name,
+          imageUrl: await getPokemonImageUrl(result.url)
+        };
       })
     )
 

@@ -12,14 +12,10 @@
   width: 100%;
 }
 
-.search__input::-ms-expand {
-  border: 1px solid red;
-}
-
 @media(min-width: 577px) {
   .search {
     display: inline-block;
-    width: fit-content;
+    width: auto;
     margin: 0;
   }
   .search__input {

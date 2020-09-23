@@ -1,14 +1,14 @@
-.button--compare {
+.button-compare {
   background-color: var(--my-light-black);
   padding-left: 1rem;
   height: 2.5rem;
   border: 1px solid var(--my-light-black);
   border-radius: 5px;
   font-size: 1rem;
-  color: white;
+  color: var(--my-white);
 }
 
-.button--compare:hover {
+.button-compare:hover {
   background-color: var(--my-dark-gray);
 }
 
@@ -18,12 +18,12 @@
 
 .info__img-container {
   height: 11.3rem;
-  width: 186px;
+  width: 11.6rem;
   margin: 0 auto;
 }
 
 .info__img {
-  width: 186px;
+  width: 11.6rem;
   image-rendering: pixelated;
 }
 
@@ -37,8 +37,8 @@
 }
 
 @media(min-width: 577px) {
-  .button--compare {
-    width: 150px;
+  .button-compare {
+    width: 9.4rem;
   }
   .content {
     padding: 0 1rem;

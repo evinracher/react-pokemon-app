@@ -10,29 +10,23 @@ const Pokemons = (props) => {
   const {
     isInitializing,
     currURL,
+    pokemons,
     isSearching,
     isLoading,
     isComparing,
     pokemonToShow,
-    pokemonToCompare,
-    pokemonsFiltered,
-    pokemonsList
-   } = props; // attributes
-  const { update, load, initList } = props; // functions
+    pokemonToCompare } = props;
+  const { update, load, initList } = props;
   const hasNextPage = props.nextURL !== null ? true : false;
-  const pokemons = isSearching ? pokemonsFiltered : pokemonsList;
-
 
   useEffect(() => {
     if (isLoading) {
       update(currURL);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currURL])
 
   useEffect(() => {
     initList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function handleLoadMore() {
@@ -58,8 +52,8 @@ const Pokemons = (props) => {
 
           <div className={styles['list']}>
             {
-              pokemons.map((pokemon) => {
-                return <Card key={pokemon.id} pokemon={pokemon} />
+              pokemons.map((pokemon, index) => {
+                return <Card key={pokemon+index} pokemon={pokemon} />
               })
             }
           </div>
@@ -67,7 +61,7 @@ const Pokemons = (props) => {
       </InfiniteScroll>
       {isLoading &&
         <div className={styles['loader']}>
-          <SyncLoader className={styles['loader__spiner']} />
+          <SyncLoader />
           <h2 className={styles['loader__text']}>Loading...</h2>
         </div>}
     </div>
@@ -83,9 +77,7 @@ const mapStateToProps = (state) => {
     currURL: state.global.currURL,
     isComparing: state.global.isComparing,
     pokemonToShow: state.global.pokemonToShow,
-    pokemonToCompare: state.global.pokemonToCompare,
-    pokemonsFiltered: state.global.pokemonsFiltered,
-    pokemonsList: state.global.pokemonsList
+    pokemonToCompare: state.global.pokemonToCompare
   }
 }
 

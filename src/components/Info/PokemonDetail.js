@@ -5,9 +5,10 @@ import { getClassNames } from '../../Utils';
 import { connect } from 'react-redux';
 import { stopShow, compare } from '../../redux/actions/globalActions';
 import Graphics from '../Graphics';
+
 const PokemonDetail = (props) => {
   const { pokemon } = props;
-  const { close, compare } = props; // state functions
+  const { close, compare } = props;
 
   const handleClick = () => {
     close();
@@ -22,7 +23,7 @@ const PokemonDetail = (props) => {
       <div className={styles['header']}>
         <div className={styles['header__info']}>
           <h2>{pokemon.name.toUpperCase()}</h2>
-          <button className={details['button--compare']}
+          <button className={details['button-compare']}
             onClick={handleCompareClick}
           >
             Compare to...

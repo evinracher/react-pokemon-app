@@ -9,7 +9,7 @@
 }
 
 .img {
-  width: 186px;
+  width: 11.6rem;
   height: 11.3rem;
   image-rendering: pixelated;
 }
@@ -21,11 +21,11 @@
 .info__row {
   display: grid;
   width: 100%;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
 }
 
-.info__row p {
+.info__text, .info__title, .info__ability {
   margin: 0.5rem 0;
 }
 

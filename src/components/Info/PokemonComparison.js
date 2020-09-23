@@ -4,6 +4,7 @@ import comparison from '../../styles/Info/Comparison.module.css';
 import { connect } from 'react-redux';
 import { stopCompare } from '../../redux/actions/globalActions';
 import Graphics from '../Graphics';
+
 const PokemonComparison = (props) => {
   const { pokemonToShow, pokemonToCompare } = props;
   const handleClick = () => {
@@ -33,13 +34,19 @@ const PokemonComparison = (props) => {
         <hr  className={styles['break-line']} />
         <div className={comparison['info']}>
           <div className={comparison['info__row']}>
-            <p>{pokemonToShow.height}m</p><p className={comparison['info__title']}>Height</p><p>{pokemonToCompare.height}m</p>
+            <p className={comparison['info__text']}>{pokemonToShow.height}m</p>
+            <p className={comparison['info__title']}>Height</p>
+            <p className={comparison['info__text']}>{pokemonToCompare.height}m</p>
           </div>
           <div className={comparison['info__row']}>
-            <p>{pokemonToShow.weight}kg</p><p className={comparison['info__title']}>Weight</p><p>{pokemonToCompare.weight}kg</p>
+            <p className={comparison['info__text']}>{pokemonToShow.weight}kg</p>
+            <p className={comparison['info__title']}>Weight</p>
+            <p className={comparison['info__text']}>{pokemonToCompare.weight}kg</p>
           </div>
           <div className={comparison['info__row']}>
-            <p>{pokemonToShow.gender}</p><p className={comparison['info__title']}>Gender</p><p>{pokemonToCompare.gender}</p>
+            <p className={comparison['info__text']}>{pokemonToShow.gender}</p>
+            <p className={comparison['info__title']}>Gender</p>
+            <p className={comparison['info__text']}>{pokemonToCompare.gender}</p>
           </div>
           <div className={comparison['info__row']}>
             <div className={comparison['info__abilities']}>

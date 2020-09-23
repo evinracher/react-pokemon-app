@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Modal from '../Modal';
 import ShowPokemon from './PokemonDetail';
 import ComparePokemons from './PokemonComparison';
+
 const Details = (props) => {
   const { isComparing, pokemonToShow, pokemonToCompare } = props;
   if (isComparing) {

@@ -38,11 +38,6 @@
   margin: 1rem;
 }
 
-.loader div {
-  display: flex;
-  justify-content: center;
-}
-
 .comparing__title {
   padding: 0.5rem;
   margin: 0;
@@ -75,8 +70,8 @@
     gap: 0.5rem;
   }
   .comparing {
-    height: fit-content;
-    width: fit-content;
+    height: auto;
+    width: auto;
     margin: 0.5rem;
     top: 3.8rem;
     left: auto;

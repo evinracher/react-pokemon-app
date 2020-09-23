@@ -7,7 +7,7 @@ const Search = (props) => {
   const { search, stopSearch, pokemonsList } = props;
   const input = useRef();
   const handleChange = (event) => {
-    let name = event.target.value.trim().replace(/\s+/g, "-");
+    let name = event.target.value.trim().replace(/\s+/g, '-');
     if (name === '') {
       stopSearch();
     } else {
@@ -16,7 +16,7 @@ const Search = (props) => {
   }
   const handleSubmit = (event) => {
     event.preventDefault();
-    let name = input.current.value.trim().replace(/\s+/g, "-");
+    let name = input.current.value.trim().replace(/\s+/g, '-');
     if (name === '') {
       stopSearch();
     } else {
@@ -30,10 +30,10 @@ const Search = (props) => {
       <div className={styles['search']}>
         <input
           className={styles['search__input']}
-          type="search"
-          id="mySearch"
-          name="q"
-          placeholder="Search"
+          type='search'
+          id='mySearch'
+          name='q'
+          placeholder='Search'
           onChange={handleChange}
           ref={input}
         >

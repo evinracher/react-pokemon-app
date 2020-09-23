@@ -20,14 +20,14 @@ const Graphics = (props) => {
       ];
     }
 
-    const colors = ['rgba(62, 130, 115)', 'rgba(102, 209, 188)'];
+    const colors = ['rgb(62, 130, 115)', 'rgb(102, 209, 188)'];
     const colorsLength = colors.length;
     datasets.forEach((data, index) => {
       data.categoryPercentage = 0.8;
       data.backgroundColor = colors[index % colorsLength];
     })
 
-    new Chart(ctx, {
+    const char = new Chart(ctx, {
       labels: '',
       type: 'bar',
       data: {
@@ -51,7 +51,7 @@ const Graphics = (props) => {
               drawBorder: true,
               drawOnChartArea: false,
               zeroLineColor: 'rgb(0,0,0)',
-              color: 'rgba(0, 0, 0)',
+              color: 'rgb(0, 0, 0)',
               tickMarkLength: 5
             },
             scaleLabel: {
@@ -67,7 +67,7 @@ const Graphics = (props) => {
               drawBorder: true,
               drawOnChartArea: false,
               zeroLineColor: 'rgb(0,0,0)',
-              color: 'rgba(0, 0, 0)',
+              color: 'rgb(0, 0, 0)',
               offsetGridLines: false,
               tickMarkLength: 5
             },

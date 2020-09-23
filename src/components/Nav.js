@@ -3,8 +3,8 @@ import styles from '../styles/Nav.module.css';
 import { getClassNames } from '../Utils';
 import {
   Link,
-} from "react-router-dom";
-import Search from "./Search"
+} from 'react-router-dom';
+import Search from './Search'
 
 const Nav = () => {
   return (

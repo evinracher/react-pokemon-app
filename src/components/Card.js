@@ -2,13 +2,14 @@ import React, { useRef } from 'react';
 import styles from '../styles/Card.module.css';
 import { connect } from 'react-redux';
 import { show } from '../redux/actions/globalActions';
+
 const Card = (props) => {
   const { name, imageUrl } = props.pokemon;
-  const { isComparing } = props; // state variables
-  const { showThisPokemon } = props; // state functions
+  const { isComparing } = props;
+  const { showThisPokemon } = props;
   const selectedPokemon = useRef();
 
-  const handleCardClick = (event) => {
+  const handleCardClick = () => {
     if (isComparing) {
       showThisPokemon(null, props.pokemon);
     } else {
@@ -33,7 +34,6 @@ const Card = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    isShowing: state.global.isShowing, // delete
     isComparing: state.global.isComparing
   }
 }

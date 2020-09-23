@@ -10,8 +10,6 @@ import {
   STOP_SEARCH
 } from '../actions/globalActions';
 
-// Start in this position to ilustrate something
-// const initialURL = 'https://pokeapi.co/api/v2/pokemon/?offset=980&limit=20';
 const initialURL = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20';
 
 const initialState = {
