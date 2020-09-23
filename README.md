@@ -70,8 +70,9 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 ## Aditional comments
 
-# Deploy
+### Deploy
 
-npm run deploy
+`npm run deploy`
 
-You must change the property homepage-github to homepage on the package.json file
+You must change the property homepage-github to homepage on the package.json file. This is build onto the gh-pages, from where it is server the page on the url:
+https://evinracher.github.io/pokemon-react-app/#/
