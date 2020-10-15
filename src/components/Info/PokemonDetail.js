@@ -71,7 +71,7 @@ const PokemonDetail = (props) => {
                 </ul>
               </div>
               <div className={details['info__attribute']}>
-                <strong className={details['info__text']}>Type</strong>
+                <strong className={details['info__text']}>Types</strong>
                 <ul>
                   {pokemon.types.map((item, index) =>
                     <li
