@@ -46,11 +46,11 @@ const PokemonDetail = (props) => {
             <div className={details['info__attributes']}>
               <div className={details['info__attribute']}>
                 <strong className={details['info__text']}>Height</strong>
-                <p className={details['info__text']}>{pokemon.height}m</p>
+                <p className={details['info__text']}>{pokemon.height * 10}cm</p>
               </div>
               <div className={details['info__attribute']}>
                 <strong className={details['info__text']}>Weight</strong>
-                <p className={details['info__text']}>{pokemon.weight}kg</p>
+                <p className={details['info__text']}>{pokemon.weight * 0.1}kg</p>
               </div>
               <div className={details['info__attribute']}>
                 <strong className={details['info__text']}>Gender</strong>

@@ -34,14 +34,14 @@ const PokemonComparison = (props) => {
         <hr  className={styles['break-line']} />
         <div className={comparison['info']}>
           <div className={comparison['info__row']}>
-            <p className={comparison['info__text']}>{pokemonToShow.height}m</p>
+            <p className={comparison['info__text']}>{pokemonToShow.height * 10}cm</p>
             <p className={comparison['info__title']}>Height</p>
-            <p className={comparison['info__text']}>{pokemonToCompare.height}m</p>
+            <p className={comparison['info__text']}>{pokemonToCompare.height * 10}cm</p>
           </div>
           <div className={comparison['info__row']}>
-            <p className={comparison['info__text']}>{pokemonToShow.weight}kg</p>
+            <p className={comparison['info__text']}>{pokemonToShow.weight * 0.1}kg</p>
             <p className={comparison['info__title']}>Weight</p>
-            <p className={comparison['info__text']}>{pokemonToCompare.weight}kg</p>
+            <p className={comparison['info__text']}>{pokemonToCompare.weight * 0.1}kg</p>
           </div>
           <div className={comparison['info__row']}>
             <p className={comparison['info__text']}>{pokemonToShow.gender}</p>
