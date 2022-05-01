@@ -2,6 +2,7 @@
 
 A pokedex app using react developed during my degree internship training process.
 
+![image](https://user-images.githubusercontent.com/25867770/166129436-f8a7d025-4432-4732-8c33-7205138c265e.png)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
