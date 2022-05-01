@@ -1,3 +1,9 @@
+# React pokemon app
+
+A pokedex app using react developed during my degree internship training process.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
